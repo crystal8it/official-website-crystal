@@ -47,7 +47,7 @@ defineProps<Props>()
         v-for="obj in links"
         :key="obj.href"
         :to="obj.href"
-        class="mr-[10px] text-gray-400 navbar-link"
+        class="mr-[30px] text-gray-400 navbar-link"
         >{{ obj.content }}</NuxtLink
       >
     </div>
@@ -56,7 +56,7 @@ defineProps<Props>()
 
 <style scoped>
 .navbar-link {
-  @apply relative before:content-[''] before:absolute before:-bottom-[3px] before:left-1/2 before:-translate-x-1/2 before:w-0 before:h-[1px] before:bg-gray-600 before:transition-all before:duration-150 before:ease-in;
+  @apply relative transition-all duration-75 ease-in hover:text-gray-600 before:content-[''] before:absolute before:-bottom-[3px] before:left-1/2 before:-translate-x-1/2 before:w-0 before:h-[1px] before:bg-gray-600 before:transition-all before:duration-150 before:ease-in;
 }
 a.router-link-active {
   @apply text-gray-600 relative  before:content-[''] before:absolute before:-bottom-[3px] before:left-1/2 before:-translate-x-1/2 before:w-full before:h-[1px] before:bg-gray-600 hover:before:w-full before:transition-all before:duration-150 before:ease-in;

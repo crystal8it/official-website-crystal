@@ -8,6 +8,7 @@ const route = useRoute()
 
 const crumbsTitle = (string: string): string => {
   const name = route.params.name as string
+  const id = route.query.id
 
   switch (string) {
     case '/':
@@ -16,7 +17,7 @@ const crumbsTitle = (string: string): string => {
       return '好文分享'
     case '/contact':
       return '聯絡我們'
-    case `/paragraph-group/${name}`:
+    case `/paragraph-group/${name}?id=${id}`:
       return name
   }
 }

@@ -9,7 +9,7 @@ export const queryByCollection = async (col: string) => {
 
   const docs = Array.from(snapshot.docs).map((doc) => {
     return {
-      ...doc.data(),
+      title: doc.data().title,
       id: doc.id
     }
   })
@@ -17,8 +17,8 @@ export const queryByCollection = async (col: string) => {
   return docs
 }
 
-export const queryByParagraphsId = async (id: string) => {
-  const docRef = doc(firestoreDB, 'paragraphs', id)
+export const queryById = async (col: string, id: string) => {
+  const docRef = doc(firestoreDB, col, id)
   const docSnap = await getDoc(docRef)
 
   return docSnap.data()
