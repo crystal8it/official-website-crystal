@@ -7,8 +7,82 @@ useHead({
 })
 
 onMounted(() => scrollTop())
+
+const typerStates = ref([
+  {
+    type: 'text',
+    title: '姓名',
+    value: '',
+    labelTailwind: 'text-left',
+    important: true
+  },
+  {
+    type: 'text',
+    title: '聯絡信箱',
+    value: '',
+    labelTailwind: 'text-left',
+    important: true
+  },
+  {
+    type: 'text',
+    title: '聯絡電話',
+    value: '',
+    labelTailwind: 'text-left'
+  },
+  {
+    type: 'text',
+    title: '聯絡公司名稱',
+    value: '',
+    labelTailwind: 'text-left'
+  },
+  {
+    type: 'checkbox',
+    title: '選項',
+    value: { 網站設計: false, App設計: false, ERP設計: false },
+    labelTailwind: 'text-left'
+  },
+  {
+    type: 'textarea',
+    title: '備註',
+    value: '',
+    labelTailwind: 'text-left'
+  }
+])
+
+const submitData = (event: Event) => {
+  typerStates.value.forEach((obj) => console.log(obj.value))
+}
 </script>
 
 <template>
-  <c-header-breadcrumb content="聯絡我們" />
+  <div>
+    <c-header-breadcrumb content="聯絡我們" />
+    <div class="px-[80px] py-[20px]">
+      <div
+        class="bg-white/100 backdrop-blur-md w-full rounded-md py-[40px] px-[60px] text-gray-700 elative"
+      >
+        <div class="flex flex-row-reverse">
+          <img src="@/assets/form.jpg" alt="插圖設計" class="h-[150px]" />
+        </div>
+        <form @submit.prevent="submitData">
+          <c-typer
+            v-for="state in typerStates"
+            :key="state.title"
+            :state="state"
+            @get-text="(value) => (state.value = value)"
+          />
+          <div class="flex items-center">
+            <div class="flex-[50%] flex-shrink-0 flex-grow-0 flex justify-center items-center">
+              <img src="@/assets/mascot.jpg" alt="插圖設計" class="h-[200px]" />
+            </div>
+            <c-button
+              type="button"
+              content="聯絡我們"
+              tailwind="bg-gray-500 mt-[40px] w-full h-[60px]"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </template>

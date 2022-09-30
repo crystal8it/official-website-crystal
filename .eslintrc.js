@@ -22,5 +22,11 @@ module.exports = {
         'vue/multi-word-component-names': 'off'
       }
     }
+  ],
+  'vue/valid-v-on': [
+    'error',
+    {
+      modifiers: []
+    }
   ]
 }

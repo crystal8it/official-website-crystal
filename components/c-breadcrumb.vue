@@ -34,7 +34,7 @@ const crumbs = computed<Crumbs[]>(() => {
   let path = ''
 
   params.forEach((param) => {
-    path = `${path}/${param}`
+    path = `${path}/${decodeURI(param)}`
 
     arr.push({
       title: crumbsTitle(path) || 'not found',
