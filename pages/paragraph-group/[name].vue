@@ -1,12 +1,6 @@
 <script lang="ts" setup>
 import scrollTop from '~~/hooks/scrollTop'
 
-useHead({
-  title: '好文分享',
-  meta: [{ name: 'description', content: 'My amazing site.' }]
-})
-onMounted(() => scrollTop())
-
 type Data = {
   result: {
     title: string
@@ -16,8 +10,13 @@ type Data = {
 }
 
 const route = useRoute()
-
 const { data } = await useFetch<Data>(`/api/p?col=paragraphs&id=${route.query.id}`)
+
+useHead({
+  title: data.value.result.title,
+  meta: [{ name: 'description', content: 'My amazing site.' }]
+})
+onMounted(() => scrollTop())
 </script>
 
 <template>

@@ -38,7 +38,7 @@ const typerStates = ref([
   {
     type: 'checkbox',
     title: '選項',
-    value: { 網站設計: false, App設計: false, ERP設計: false },
+    value: { 網站設計: false, App設計: false, ERP設計: false, 'UI/UX設計': false, 其它: false },
     labelTailwind: 'text-left'
   },
   {
