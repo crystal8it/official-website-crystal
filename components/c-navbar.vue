@@ -10,7 +10,7 @@ defineProps<Props>()
 </script>
 
 <template>
-  <nav class="w-full h-[60px] flex items-center justify-between px-[20px]">
+  <nav class="w-full bg-white h-[60px] flex items-center justify-between px-[20px]">
     <div class="flex items-center">
       <svg
         width="40"

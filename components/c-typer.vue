@@ -54,7 +54,7 @@ const emitsCallback = (e: Event, string: string, ...arr) => {
     <div class="flex mt-[5px]">
       <div class="flex items-center" v-for="(_, key) in state.value" :key="key">
         <label
-          class="rounded-[100px] w-[30px] h-[30px] border border-gray-200 relative cursor-pointer mr-[5px]"
+          class="rounded-[100px] w-[30px] h-[30px] border-[2px] border-gray-200 relative cursor-pointer mr-[5px]"
         >
           <input
             class="absolute top-0 left-0 opacity-0 custom-checkbox cursor-pointer"
@@ -63,7 +63,7 @@ const emitsCallback = (e: Event, string: string, ...arr) => {
           />
           <span></span>
         </label>
-        <span class="mr-[15px]">{{ key }}</span>
+        <span class="ml-[8px] mr-[15px]">{{ key }}</span>
       </div>
     </div>
   </div>
@@ -73,7 +73,7 @@ const emitsCallback = (e: Event, string: string, ...arr) => {
     <div class="flex mt-[5px]">
       <div class="flex items-center" v-for="(_, key) in state.value" :key="key">
         <label
-          class="rounded-[100px] w-[30px] h-[30px] border border-gray-200 relative cursor-pointer mr-[5px]"
+          class="rounded-[100px] w-[30px] h-[30px] border-[2px] border-gray-200 relative cursor-pointer mr-[5px]"
         >
           <input
             class="absolute top-0 left-0 opacity-0 custom-checkbox cursor-pointer"
@@ -83,7 +83,7 @@ const emitsCallback = (e: Event, string: string, ...arr) => {
           />
           <span></span>
         </label>
-        <span class="mr-[15px]">{{ key }}</span>
+        <span class="ml-[8px] mr-[15px]">{{ key }}</span>
       </div>
     </div>
   </div>

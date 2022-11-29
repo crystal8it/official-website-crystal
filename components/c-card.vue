@@ -19,7 +19,7 @@ defineProps<Props>()
       }
     }"
   >
-    <div class="text-gray-600">
+    <div class="text-gray-600 text-center">
       <h3>{{ info.title }}</h3>
     </div>
   </NuxtLink>
