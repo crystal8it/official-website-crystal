@@ -1,5 +1,5 @@
 <template>
-  <main class="h-full text-white px-[60px]">
+  <main class="h-full text-white">
     <slot></slot>
   </main>
 </template>

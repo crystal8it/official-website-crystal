@@ -42,7 +42,7 @@ const emitsCallback = (e: Event, string: string, ...arr) => {
   >
     <p>{{ state.title }} <span v-if="state.important" class="text-red-600">*</span></p>
     <input
-      class="w-full border px-[10px] py-[8px] rounded-md mb-[20px] mt-[5px]"
+      class="mb-[20px] mt-[5px] w-full rounded-md border px-[10px] py-[8px]"
       :type="state.type"
       :value="state.value"
       @input.lazy="emitsCallback($event, 'value')"
@@ -51,13 +51,13 @@ const emitsCallback = (e: Event, string: string, ...arr) => {
 
   <div v-else-if="state.type === 'checkbox'" class="my-[15px] block" :class="state.labelTailwind">
     <p>{{ state.title }} <span v-if="state.important" class="text-red-600">*</span></p>
-    <div class="flex mt-[5px]">
+    <div class="mt-[5px] flex">
       <div class="flex items-center" v-for="(_, key) in state.value" :key="key">
         <label
-          class="rounded-[100px] w-[30px] h-[30px] border-[2px] border-gray-200 relative cursor-pointer mr-[5px]"
+          class="relative mr-[5px] h-[30px] w-[30px] cursor-pointer rounded-[100px] border-[2px] border-gray-200"
         >
           <input
-            class="absolute top-0 left-0 opacity-0 custom-checkbox cursor-pointer"
+            class="custom-checkbox absolute top-0 left-0 cursor-pointer opacity-0"
             :type="state.type"
             @input.lazy="emitsCallback($event, 'checked', key, state.value)"
           />
@@ -70,13 +70,13 @@ const emitsCallback = (e: Event, string: string, ...arr) => {
 
   <div v-else-if="state.type === 'radio'" class="my-[15px] block" :class="state.labelTailwind">
     <p>{{ state.title }} <span v-if="state.important" class="text-red-600">*</span></p>
-    <div class="flex mt-[5px]">
+    <div class="mt-[5px] flex">
       <div class="flex items-center" v-for="(_, key) in state.value" :key="key">
         <label
-          class="rounded-[100px] w-[30px] h-[30px] border-[2px] border-gray-200 relative cursor-pointer mr-[5px]"
+          class="relative mr-[5px] h-[30px] w-[30px] cursor-pointer rounded-[100px] border-[2px] border-gray-200"
         >
           <input
-            class="absolute top-0 left-0 opacity-0 custom-checkbox cursor-pointer"
+            class="custom-checkbox absolute top-0 left-0 cursor-pointer opacity-0"
             :type="state.type"
             :name="state.radioName"
             @input.lazy="emitsCallback($event, 'checked', key, state.value)"
@@ -91,7 +91,7 @@ const emitsCallback = (e: Event, string: string, ...arr) => {
   <label v-else-if="state.type === 'textarea'" class="my-[15px] block" :class="state.labelTailwind">
     <p>{{ state.title }}</p>
     <textarea
-      class="w-full h-[300px] border p-[10px] resize-none rounded-md mt-[5px]"
+      class="mt-[5px] h-[300px] w-full resize-none rounded-md border p-[10px]"
       :value="state.value"
       @input.lazy="emitsCallback($event, 'value')"
     />
@@ -100,6 +100,6 @@ const emitsCallback = (e: Event, string: string, ...arr) => {
 
 <style scpoed>
 .custom-checkbox:checked ~ span {
-  @apply rounded-[100px] w-[15px] h-[15px] bg-gray-300 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer mr-[5px];
+  @apply absolute top-1/2 left-1/2 mr-[5px] h-[15px] w-[15px] -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-[100px] bg-gray-300;
 }
 </style>

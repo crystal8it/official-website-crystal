@@ -23,6 +23,6 @@ defineProps<{
 
 <style>
 .button-style {
-  @apply rounded-md  text-white text-center leading-[40px];
+  @apply text-center  text-white;
 }
 </style>

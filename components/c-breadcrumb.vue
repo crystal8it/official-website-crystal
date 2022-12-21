@@ -7,8 +7,8 @@ type Crumbs = {
 const route = useRoute()
 
 const crumbsTitle = (string: string): string => {
-  const name = route.params.name as string
-  const id = route.query.id
+  const id = route.params.id as string
+  const name = route.query.name as string
 
   switch (string) {
     case '/':
@@ -17,7 +17,7 @@ const crumbsTitle = (string: string): string => {
       return '好文分享'
     case '/contact':
       return '聯絡我們'
-    case `/paragraph-group/${name}?id=${id}`:
+    case `/paragraph-group/${id}?name=${name}`:
       return name
   }
 }
@@ -62,10 +62,10 @@ const crumbs = computed<Crumbs[]>(() => {
 
 <style scoped>
 .link {
-  @apply mr-[10px] text-[14px] font-thin relative;
+  @apply relative mr-[10px] text-[14px] font-thin;
 }
 
 .link-before {
-  @apply before:content-[''] before:absolute before:-bottom-[3px] before:left-1/2 before:-translate-x-1/2 before:w-0 before:h-[1px] before:bg-white hover:before:w-full before:transition-all before:duration-300 before:ease-in;
+  @apply before:absolute before:-bottom-[3px] before:left-1/2 before:h-[1px] before:w-0 before:-translate-x-1/2 before:bg-white before:transition-all before:duration-300 before:ease-in before:content-[''] hover:before:w-full;
 }
 </style>

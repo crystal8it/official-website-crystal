@@ -1,7 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;400;500&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
   @apply bg-background-dark;
+  scroll-behavior: smooth;
+}
+
+html {
+  font-family: Kiwi Maru, system-ui, sans-serif;
+}
+
+@keyframes land {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
 }

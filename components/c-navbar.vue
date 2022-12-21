@@ -6,15 +6,26 @@ type Props = {
   }[]
 }
 
+const isScroll = ref()
+
+onMounted(() => {
+  window.addEventListener('scroll', (e) => {
+    isScroll.value = window.scrollY > screen.height / 3 ? true : false
+  })
+})
+
 defineProps<Props>()
 </script>
 
 <template>
-  <nav class="w-full bg-white h-[60px] flex items-center justify-between px-[20px]">
+  <nav
+    class="fixed top-0 left-0 z-50 flex h-[80px] w-full items-center justify-between px-[20px] transition-all duration-300 ease-in"
+    :class="isScroll && 'bg-[rgba(255,255,255,0.6)] shadow-md  backdrop-blur-sm'"
+  >
     <div class="flex items-center">
       <svg
-        width="40"
-        height="40"
+        width="60"
+        height="60"
         viewBox="0 0 432 724"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -37,17 +48,233 @@ defineProps<Props>()
         />
       </svg>
       <div>
-        <h1 class="text-[20px] text-gray-700">CRYSTAL BIT.</h1>
-        <h4 class="text-[12px] text-gray-400">WEB DESIGN / SYSTEM DESIGN</h4>
+        <svg
+          width="152"
+          height="35"
+          viewBox="0 0 152 35"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M15.884 12.5716C15.884 13.0869 15.6879 13.5311 15.2958 13.9042C14.9222 14.2596 14.4647 14.4373 13.9231 14.4373H6.07925C5.53765 14.4373 5.07076 14.2596 4.67856 13.9042C4.30504 13.5311 4.11829 13.0869 4.11829 12.5716V3.24314C4.11829 2.72785 4.30504 2.29252 4.67856 1.93715C5.07076 1.56401 5.53765 1.37744 6.07925 1.37744H13.9231C14.4647 1.37744 14.9222 1.56401 15.2958 1.93715C15.6879 2.29252 15.884 2.72785 15.884 3.24314V5.10884H13.6429V3.24314H6.35939V12.5716H13.6429V10.7059H15.884V12.5716Z"
+            :fill="isScroll ? 'rgb(55,65,81)' : 'white'"
+            stroke="black"
+            stroke-width="0.0382517"
+            stroke-dasharray="2.44 2.44"
+          />
+          <path
+            d="M32.144 14.4373H29.2865L23.4597 8.84023H29.6227V3.24314H22.3391V14.4373H20.098V5.08218L22.059 3.24314H20.098V1.37744H29.9029C30.4258 1.37744 30.8833 1.56401 31.2755 1.93715C31.6677 2.31029 31.8638 2.74562 31.8638 3.24314V8.30718C31.8638 9.72866 31.2102 10.4394 29.9029 10.4394H28.222V10.7326L32.144 14.4373Z"
+            :fill="isScroll ? 'rgb(55,65,81)' : 'white'"
+            stroke="black"
+            stroke-width="0.0382517"
+            stroke-dasharray="2.95 2.95"
+          />
+          <path
+            d="M47.417 8.84023C47.417 9.35552 47.2209 9.79973 46.8287 10.1729C46.4552 10.5282 45.9977 10.7059 45.4561 10.7059H42.6547V14.4373H40.4136V10.7059H37.6122C37.0706 10.7059 36.6037 10.5282 36.2115 10.1729C35.838 9.79973 35.6512 9.35552 35.6512 8.84023V1.37744H37.8923V8.84023H45.1759V1.37744H47.417V8.84023Z"
+            :fill="isScroll ? 'rgb(55,65,81)' : 'white'"
+            stroke="black"
+            stroke-width="0.0382517"
+            stroke-dasharray="2.13 2.13"
+          />
+          <path
+            d="M61.1319 12.5716C61.1319 13.0869 60.9358 13.5311 60.5436 13.9042C60.17 14.2596 59.7125 14.4373 59.1709 14.4373H51.327V12.5716H58.8907V8.84023H53.288C52.7464 8.84023 52.2795 8.66255 51.8873 8.30718C51.5138 7.93404 51.327 7.48982 51.327 6.97453V3.24314C51.327 2.72785 51.5138 2.29252 51.8873 1.93715C52.2795 1.56401 52.7464 1.37744 53.288 1.37744H61.1319V3.24314H53.5681V6.97453H59.1709C59.7125 6.97453 60.17 7.16111 60.5436 7.53425C60.9358 7.88961 61.1319 8.32494 61.1319 8.84023V12.5716Z"
+            :fill="isScroll ? 'rgb(55,65,81)' : 'white'"
+            stroke="black"
+            stroke-width="0.0382517"
+            stroke-dasharray="2.42 2.42"
+          />
+          <path
+            d="M73.6044 3.24314H69.5424V14.4373H67.3013V3.24314H63.2393V1.37744H73.6044V3.24314Z"
+            :fill="isScroll ? 'rgb(55,65,81)' : 'white'"
+            stroke="black"
+            stroke-width="0.0382517"
+            stroke-dasharray="1.58 1.58"
+          />
+          <path
+            d="M88.0285 14.4373H85.7874V10.7059H78.5038V14.4373H76.2627V3.24314C76.2627 2.72785 76.4494 2.29252 76.823 1.93715C77.2152 1.56401 77.6821 1.37744 78.2237 1.37744H88.0285V14.4373ZM85.7874 8.84023V3.24314H78.5038V10.4394L80.1846 8.84023H85.7874Z"
+            :fill="isScroll ? 'rgb(55,65,81)' : 'white'"
+            stroke="black"
+            stroke-width="0.0382517"
+            stroke-dasharray="2.84 2.84"
+          />
+          <path
+            d="M102.865 14.4373H93.0598V1.37744H95.3009V12.5716H100.624V10.7059H102.865V14.4373Z"
+            :fill="isScroll ? 'rgb(55,65,81)' : 'white'"
+            stroke="black"
+            stroke-width="0.0382517"
+            stroke-dasharray="1.67 1.67"
+          />
+          <path
+            d="M123.046 12.5716C123.046 13.0869 122.85 13.5311 122.458 13.9042C122.084 14.2596 121.627 14.4373 121.085 14.4373H111.28V5.10884L113.241 3.24314H111.28V1.37744H119.124C119.666 1.37744 120.123 1.56401 120.497 1.93715C120.889 2.29252 121.085 2.72785 121.085 3.24314V6.97453H121.141C121.683 6.97453 122.131 7.16111 122.486 7.53425C122.859 7.88961 123.046 8.32494 123.046 8.84023V12.5716ZM118.844 6.97453V3.24314H113.521V8.5737L115.202 6.97453H118.844ZM120.805 12.5716V8.84023H113.521V12.5716H120.805Z"
+            :fill="isScroll ? 'rgb(55,65,81)' : 'white'"
+            stroke="black"
+            stroke-width="0.0382517"
+            stroke-dasharray="3.1 3.1"
+          />
+          <path
+            d="M129.771 14.4373H127.53V1.37744H129.771V14.4373Z"
+            :fill="isScroll ? 'rgb(55,65,81)' : 'white'"
+            stroke="black"
+            stroke-width="0.0382517"
+            stroke-dasharray="1.05 1.05"
+          />
+          <path
+            d="M142.791 3.24314H138.729V14.4373H136.488V3.24314H132.426V1.37744H142.791V3.24314Z"
+            :fill="isScroll ? 'rgb(55,65,81)' : 'white'"
+            stroke="black"
+            stroke-width="0.0382517"
+            stroke-dasharray="1.58 1.58"
+          />
+          <path
+            d="M147.69 14.4372H145.168V12.3049H147.69V14.4372Z"
+            :fill="isScroll ? 'rgb(55,65,81)' : 'white'"
+            stroke="black"
+            stroke-width="0.0382517"
+            stroke-dasharray="0.31 0.31"
+          />
+          <path
+            d="M13.5846 22.3665L11.7871 29.9847H9.58099L8.02856 24.4032H7.86515L6.31272 29.9847H4.10663L2.30908 22.3665H3.77981L5.08712 28.9275H5.41394L7.2932 22.3665H8.60051L10.4798 28.9275H10.8066L12.1139 22.3665H13.5846Z"
+            :fill="isScroll ? 'rgb(55,65,81)' : 'white'"
+            stroke="black"
+            stroke-width="0.0382517"
+            stroke-dasharray="2.17 2.17"
+          />
+          <path
+            d="M21.0161 29.9846H16.4405C16.1246 29.9846 15.8522 29.881 15.6235 29.6736C15.4055 29.456 15.2966 29.1969 15.2966 28.8963V25.6313C15.2966 25.3308 15.4055 25.0768 15.6235 24.8695C15.8522 24.6518 16.1246 24.543 16.4405 24.543H19.8722C20.1881 24.543 20.455 24.6518 20.6729 24.8695C20.9017 25.0768 21.0161 25.3308 21.0161 25.6313V26.7196L19.8722 27.8079H16.6039L17.5844 26.8751H19.8722V25.4758H16.4405V29.0517H21.0161V29.9846Z"
+            :fill="isScroll ? 'rgb(55,65,81)' : 'white'"
+            stroke="black"
+            stroke-width="0.0382517"
+            stroke-dasharray="1.34 1.34"
+          />
+          <path
+            d="M28.696 28.8963C28.696 29.1969 28.5817 29.456 28.3529 29.6736C28.135 29.881 27.8681 29.9846 27.5521 29.9846H24.1205V29.0673L22.9766 30.1401V22.0554L24.1205 20.967V25.3203L24.9375 24.543H27.5521C27.8681 24.543 28.135 24.6518 28.3529 24.8695C28.5817 25.0768 28.696 25.3308 28.696 25.6313V28.8963ZM27.5521 29.0517V25.4758H24.1205V29.0517H27.5521Z"
+            :fill="isScroll ? 'rgb(55,65,81)' : 'white'"
+            stroke="black"
+            stroke-width="0.0382517"
+            stroke-dasharray="1.5 1.5"
+          />
+          <path
+            d="M41.4452 28.8964C41.4452 29.1867 41.3308 29.4406 41.102 29.6582C40.8732 29.8759 40.6064 29.9847 40.3013 29.9847H34.5818V24.5431L35.7257 23.4548H34.5818V22.3665H40.3013C40.6064 22.3665 40.8732 22.4753 41.102 22.693C41.3308 22.9106 41.4452 23.1646 41.4452 23.4548V28.8964ZM40.1379 28.8964V23.4548H35.8891V29.8292L36.8696 28.8964H40.1379Z"
+            :fill="isScroll ? 'rgb(55,65,81)' : 'white'"
+            stroke="black"
+            stroke-width="0.0382517"
+            stroke-dasharray="1.69 1.69"
+          />
+          <path
+            d="M49.693 29.9846H45.1174C44.8014 29.9846 44.5291 29.881 44.3003 29.6736C44.0824 29.456 43.9735 29.1969 43.9735 28.8963V25.6313C43.9735 25.3308 44.0824 25.0768 44.3003 24.8695C44.5291 24.6518 44.8014 24.543 45.1174 24.543H48.5491C48.8651 24.543 49.1319 24.6518 49.3498 24.8695C49.5786 25.0768 49.693 25.3308 49.693 25.6313V26.7196L48.5491 27.8079H45.2808L46.2613 26.8751H48.5491V25.4758H45.1174V29.0517H49.693V29.9846Z"
+            :fill="isScroll ? 'rgb(55,65,81)' : 'white'"
+            stroke="black"
+            stroke-width="0.0382517"
+            stroke-dasharray="1.34 1.34"
+          />
+          <path
+            d="M56.1475 24.543L55.1507 25.4758H52.389V26.7196H54.6768C54.9927 26.7196 55.2596 26.8284 55.4775 27.0461C55.7063 27.2534 55.8207 27.5074 55.8207 27.8079V28.8963C55.8207 29.1969 55.7063 29.456 55.4775 29.6736C55.2596 29.881 54.9927 29.9846 54.6768 29.9846H51.2451V29.0517H54.6768V27.6525H52.389C52.073 27.6525 51.8007 27.5489 51.5719 27.3415C51.354 27.1238 51.2451 26.8648 51.2451 26.5641V25.6313C51.2451 25.3308 51.354 25.0768 51.5719 24.8695C51.8007 24.6518 52.073 24.543 52.389 24.543H56.1475Z"
+            :fill="isScroll ? 'rgb(55,65,81)' : 'white'"
+            stroke="black"
+            stroke-width="0.0382517"
+            stroke-dasharray="1.06 1.06"
+          />
+          <path
+            d="M59.0012 23.6103H57.8573V22.3665H59.0012V23.6103ZM59.0012 29.9847H57.8573V25.3205L59.0012 24.2322V29.9847Z"
+            :fill="isScroll ? 'rgb(55,65,81)' : 'white'"
+            stroke="black"
+            stroke-width="0.0382517"
+            stroke-dasharray="0.61 0.61"
+          />
+          <path
+            d="M67.6618 24.543L66.6814 25.4758H62.596V29.0517H66.0277V25.9422H67.1716V32.1612C67.1716 32.4619 67.0572 32.7158 66.8284 32.9231C66.6105 33.1407 66.3437 33.2496 66.0277 33.2496H61.2887L62.2692 32.3167H66.0277V29.1917L65.0472 29.9846H62.596C62.28 29.9846 62.0077 29.881 61.7789 29.6736C61.561 29.456 61.4521 29.1969 61.4521 28.8963V25.6313C61.4521 25.3308 61.561 25.0768 61.7789 24.8695C62.0077 24.6518 62.28 24.543 62.596 24.543H67.6618Z"
+            :fill="isScroll ? 'rgb(55,65,81)' : 'white'"
+            stroke="black"
+            stroke-width="0.0382517"
+            stroke-dasharray="1.78 1.78"
+          />
+          <path
+            d="M75.2585 29.9846H74.1147V25.4758H70.683V29.9846H69.5391V24.543H70.683V25.3203L71.5 24.543H74.1147C74.4305 24.543 74.6975 24.6518 74.9154 24.8695C75.1442 25.0768 75.2585 25.3308 75.2585 25.6313V29.9846Z"
+            :fill="isScroll ? 'rgb(55,65,81)' : 'white'"
+            stroke="black"
+            stroke-width="0.0382517"
+            stroke-dasharray="1.08 1.08"
+          />
+          <path
+            d="M85.0704 21.2783L80.5602 31.0732H79.351L83.9102 21.2783H85.0704Z"
+            :fill="isScroll ? 'rgb(55,65,81)' : 'white'"
+            stroke="black"
+            stroke-width="0.0382517"
+            stroke-dasharray="0.81 0.81"
+          />
+          <path
+            d="M96.3423 29.9847H95.0349V29.0519L94.0545 29.9847H90.6228C90.3068 29.9847 90.0345 29.8811 89.8057 29.6738C89.5878 29.4561 89.4789 29.197 89.4789 28.8964V22.3665H90.7862V28.8964H95.0349V22.3665H96.3423V29.9847Z"
+            :fill="isScroll ? 'rgb(55,65,81)' : 'white'"
+            stroke="black"
+            stroke-width="0.0382517"
+            stroke-dasharray="1.45 1.45"
+          />
+          <path
+            d="M104.017 29.9846H102.611L101.059 27.839H100.895L99.3429 29.9846H97.9702L100.242 27.1238L98.1336 24.543H99.5063L100.928 26.4709H101.091L102.448 24.543H103.853L101.712 27.1238L104.017 29.9846Z"
+            :fill="isScroll ? 'rgb(55,65,81)' : 'white'"
+            stroke="black"
+            stroke-width="0.0382517"
+            stroke-dasharray="1.01 1.01"
+          />
+          <path
+            d="M115.78 28.8964C115.78 29.1867 115.665 29.4406 115.436 29.6582C115.208 29.8759 114.941 29.9847 114.636 29.9847H108.916V24.5431L110.06 23.4548H108.916V22.3665H114.636C114.941 22.3665 115.208 22.4753 115.436 22.693C115.665 22.9106 115.78 23.1646 115.78 23.4548V28.8964ZM114.472 28.8964V23.4548H110.223V29.8292L111.204 28.8964H114.472Z"
+            :fill="isScroll ? 'rgb(55,65,81)' : 'white'"
+            stroke="black"
+            stroke-width="0.0382517"
+            stroke-dasharray="1.69 1.69"
+          />
+          <path
+            d="M124.027 29.9846H119.452C119.135 29.9846 118.863 29.881 118.635 29.6736C118.416 29.456 118.308 29.1969 118.308 28.8963V25.6313C118.308 25.3308 118.416 25.0768 118.635 24.8695C118.863 24.6518 119.135 24.543 119.452 24.543H122.883C123.2 24.543 123.466 24.6518 123.684 24.8695C123.913 25.0768 124.027 25.3308 124.027 25.6313V26.7196L122.883 27.8079H119.615L120.596 26.8751H122.883V25.4758H119.452V29.0517H124.027V29.9846Z"
+            :fill="isScroll ? 'rgb(55,65,81)' : 'white'"
+            stroke="black"
+            stroke-width="0.0382517"
+            stroke-dasharray="1.34 1.34"
+          />
+          <path
+            d="M130.481 24.543L129.484 25.4758H126.723V26.7196H129.01C129.327 26.7196 129.594 26.8284 129.811 27.0461C130.04 27.2534 130.154 27.5074 130.154 27.8079V28.8963C130.154 29.1969 130.04 29.456 129.811 29.6736C129.594 29.881 129.327 29.9846 129.01 29.9846H125.579V29.0517H129.01V27.6525H126.723C126.407 27.6525 126.134 27.5489 125.905 27.3415C125.688 27.1238 125.579 26.8648 125.579 26.5641V25.6313C125.579 25.3308 125.688 25.0768 125.905 24.8695C126.134 24.6518 126.407 24.543 126.723 24.543H130.481Z"
+            :fill="isScroll ? 'rgb(55,65,81)' : 'white'"
+            stroke="black"
+            stroke-width="0.0382517"
+            stroke-dasharray="1.06 1.06"
+          />
+          <path
+            d="M133.335 23.6103H132.191V22.3665H133.335V23.6103ZM133.335 29.9847H132.191V25.3205L133.335 24.2322V29.9847Z"
+            :fill="isScroll ? 'rgb(55,65,81)' : 'white'"
+            stroke="black"
+            stroke-width="0.0382517"
+            stroke-dasharray="0.61 0.61"
+          />
+          <path
+            d="M141.996 24.543L141.016 25.4758H136.93V29.0517H140.362V25.9422H141.506V32.1612C141.506 32.4619 141.392 32.7158 141.163 32.9231C140.944 33.1407 140.678 33.2496 140.362 33.2496H135.623L136.604 32.3167H140.362V29.1917L139.382 29.9846H136.93C136.614 29.9846 136.342 29.881 136.113 29.6736C135.895 29.456 135.786 29.1969 135.786 28.8963V25.6313C135.786 25.3308 135.895 25.0768 136.113 24.8695C136.342 24.6518 136.614 24.543 136.93 24.543H141.996Z"
+            :fill="isScroll ? 'rgb(55,65,81)' : 'white'"
+            stroke="black"
+            stroke-width="0.0382517"
+            stroke-dasharray="1.78 1.78"
+          />
+          <path
+            d="M149.592 29.9846H148.448V25.4758H145.017V29.9846H143.873V24.543H145.017V25.3203L145.834 24.543H148.448C148.765 24.543 149.032 24.6518 149.249 24.8695C149.478 25.0768 149.592 25.3308 149.592 25.6313V29.9846Z"
+            :fill="isScroll ? 'rgb(55,65,81)' : 'white'"
+            stroke="black"
+            stroke-width="0.0382517"
+            stroke-dasharray="1.08 1.08"
+          />
+        </svg>
+        <h3
+          class="ml-1 text-[16px] tracking-[20px]"
+          :class="isScroll ? 'text-gray-700' : 'text-white'"
+        >
+          晶陛設計
+        </h3>
       </div>
     </div>
 
-    <div class="flex">
+    <div class="mr-10 flex gap-10">
       <NuxtLink
         v-for="obj in links"
         :key="obj.href"
         :to="obj.href"
-        class="mr-[30px] text-gray-400 navbar-link"
+        class="navbar-link router-hover"
+        :class="isScroll ? 'text-gray-600 before:bg-gray-600 ' : 'text-white before:bg-white '"
         >{{ obj.content }}</NuxtLink
       >
     </div>
@@ -56,13 +283,18 @@ defineProps<Props>()
 
 <style scoped>
 .navbar-link {
-  @apply relative transition-all duration-75 ease-in hover:text-gray-600 before:content-[''] before:absolute before:-bottom-[3px] before:left-1/2 before:-translate-x-1/2 before:w-0 before:h-[1px] before:bg-gray-600 before:transition-all before:duration-150 before:ease-in;
+  @apply relative transition-all duration-75 ease-in before:absolute before:-bottom-[3px] before:left-1/2 before:h-[1px] before:w-0 before:-translate-x-1/2  before:transition-all before:duration-150 before:ease-in before:content-[''];
 }
+
 a.router-link-active {
-  @apply text-gray-600 relative  before:content-[''] before:absolute before:-bottom-[3px] before:left-1/2 before:-translate-x-1/2 before:w-full before:h-[1px] before:bg-gray-600 hover:before:w-full before:transition-all before:duration-150 before:ease-in;
+  @apply relative before:absolute before:-bottom-[3px] before:left-1/2 before:h-[1px] before:w-full before:-translate-x-1/2  before:transition-all before:duration-150 before:ease-in before:content-[''] hover:before:w-full;
+}
+
+a.router-hover {
+  @apply relative before:-translate-x-1/2 hover:before:absolute hover:before:-bottom-[3px] hover:before:left-1/2  hover:before:h-[1px] hover:before:w-full   hover:before:transition-all hover:before:duration-150 hover:before:ease-in hover:before:content-[''];
 }
 
 a.router-link-exact-active {
-  @apply text-gray-600 relative before:content-['']  before:absolute before:-bottom-[3px] before:left-1/2 before:-translate-x-1/2 before:w-full before:h-[1px] before:bg-gray-600 hover:before:w-full before:transition-all before:duration-150 before:ease-in;
+  @apply relative before:absolute  before:-bottom-[3px] before:left-1/2 before:h-[1px] before:w-full before:-translate-x-1/2  before:transition-all before:duration-150 before:ease-in before:content-[''] hover:before:w-full;
 }
 </style>

@@ -1,6 +1,10 @@
 <script lang="ts" setup>
 import scrollTop from '~~/hooks/scrollTop'
 
+definePageMeta({
+  layout: 'blog'
+})
+
 type Data = {
   result: {
     title: string
@@ -11,7 +15,7 @@ type Data = {
 
 const route = useRoute()
 
-const { data } = await useFetch<Data>(`/api/p?col=paragraphs&id=${route.query.id}`)
+const { data } = await useFetch<Data>(`/api/p?col=paragraphs&id=${route.path.split('/')[2]}`)
 
 useHead({
   title: data.value.result.title,
@@ -26,10 +30,10 @@ onMounted(() => scrollTop())
     <c-header-breadcrumb :content="data.result.title" />
     <div class="px-[80px] py-[20px]">
       <div
-        class="bg-white/100 backdrop-blur-md w-full rounded-md py-[40px] px-[60px] text-gray-700"
+        class="w-full rounded-md bg-white/100 py-[40px] px-[60px] text-gray-700 backdrop-blur-md"
       >
         <div v-for="obj in data.result.content" :key="obj.chapterTitle" class="text-left">
-          <h1 class="text-[25px] my-[20px]">{{ obj.chapterTitle }}</h1>
+          <h1 class="my-[20px] text-[25px]">{{ obj.chapterTitle }}</h1>
           <p style="white-space: pre-line" class="my-[20px]">
             {{ obj.chapterContent.replace(/\\n/g, '\n') }}
           </p>

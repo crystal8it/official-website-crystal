@@ -12,6 +12,9 @@ module.exports = {
     extend: {
       colors: {
         'background-dark': '#222'
+      },
+      fontFamily:{
+        'kiwimaru':['Kiwi Maru', 'serif']
       }
     },
     screens: {

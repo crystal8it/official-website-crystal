@@ -1,6 +1,10 @@
 <script lang="ts" setup>
 import scrollTop from '~~/hooks/scrollTop'
 
+definePageMeta({
+  layout: 'blog'
+})
+
 useHead({
   title: '聯絡我們',
   meta: [{ name: 'description', content: 'My amazing site.' }]
@@ -59,7 +63,7 @@ const submitData = (event: Event) => {
     <c-header-breadcrumb content="聯絡我們" />
     <div class="px-[80px] py-[20px]">
       <div
-        class="bg-white/100 backdrop-blur-md w-full rounded-md py-[40px] px-[60px] text-gray-700 elative"
+        class="relative w-full rounded-md bg-white/100 py-[40px] px-[60px] text-gray-700 backdrop-blur-md"
       >
         <div class="flex flex-row-reverse">
           <img src="@/assets/form.jpg" alt="插圖設計" class="h-[150px]" />
@@ -72,7 +76,7 @@ const submitData = (event: Event) => {
             @get-text="(value) => (state.value = value)"
           />
           <div class="flex items-center">
-            <div class="flex-[50%] flex-shrink-0 flex-grow-0 flex justify-center items-center">
+            <div class="flex flex-[50%] flex-shrink-0 flex-grow-0 items-center justify-center">
               <img src="@/assets/mascot.jpg" alt="插圖設計" class="h-[200px]" />
             </div>
             <c-button

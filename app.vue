@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { useFog } from '~~/hooks/useCanvasAnimation'
 useHead({
   titleTemplate: (title) => `Crystal bit | ${title}`,
   viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
@@ -7,24 +8,36 @@ useHead({
   link: [
     {
       rel: 'icon',
-      type: 'image/x-icon',
-      href: '/assets/Logo.svg'
+      type: 'image/svg+xml',
+      href: '/favicon.svg'
     }
   ]
 })
 
 const links = [
-  { href: '/', content: '關於我們' },
-  { href: '/paragraph-group', content: '好文分享' },
-  { href: '/contact', content: '聯絡我們' }
+  { href: '/', content: 'About Us' },
+  { href: '/paragraph-group', content: 'Article' },
+  { href: '/contact', content: 'Contact' }
 ]
+
+const fog = ref()
+
+onBeforeMount(() => {
+  fog.value = useFog('galaxy')
+})
+
+onBeforeUnmount(() => {
+  //@ts-ignore-next-line
+  if (fog.value) fog.value.destroy()
+})
 </script>
 
 <template>
   <div>
     <c-navbar :links="links" />
+    <div class="absolute top-0 left-0 z-0 h-[calc(100vh-10px)] w-full" id="galaxy"></div>
     <c-container>
-      <NuxtPage />
+      <NuxtLayout />
     </c-container>
   </div>
 </template>

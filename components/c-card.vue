@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 type Props = {
   info: {
-    title: string
+    title?: string
     id: string
   }
 }
@@ -11,15 +11,15 @@ defineProps<Props>()
 
 <template>
   <NuxtLink
-    class="bg-white rounded-md"
+    class="rounded-md bg-white"
     :to="{
-      path: `/paragraph-group/${info.title}`,
+      path: `/paragraph-group/${info.id}`,
       query: {
-        id: info.id
+        name: info.title
       }
     }"
   >
-    <div class="text-gray-600 text-center">
+    <div class="text-center text-gray-600">
       <h3>{{ info.title }}</h3>
     </div>
   </NuxtLink>
