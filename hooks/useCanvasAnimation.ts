@@ -102,6 +102,7 @@ export const useFog = (id: string) => {
     touchControls: true,
     gyroControls: false,
     minHeight: clientRect.height,
+    maxWidth: clientRect.width,
     highlightColor: 0x4a6789,
     midtoneColor: 0x576a8e,
     lowlightColor: 0x544c7f,

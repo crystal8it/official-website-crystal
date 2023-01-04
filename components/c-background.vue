@@ -1,147 +1,195 @@
 <script lang="ts" setup>
-// function getOffset(el) {
-//   const rect = el.getBoundingClientRect()
-//   return {
-//     left: rect.left + window.scrollX,
-//     top: rect.top + window.scrollY
-//   }
-// }
+function getOffset(el) {
+  const rect = el.getBoundingClientRect()
+  return {
+    left: rect.left + window.scrollX,
+    top: rect.top + window.scrollY
+  }
+}
 
-// const animateHandler = (els: NodeListOf<Element>) => {
-//   window.addEventListener('scroll', () => {
-//     const h = document.documentElement.scrollTop + document.documentElement.clientHeight - 100
+const scrollAnimation = (els: NodeListOf<Element>) => {
+  return () => {
+    const h = document.documentElement.scrollTop + document.documentElement.clientHeight - 50
 
-//     els.forEach((el) => {
-//       const condition = getOffset(el).top - h < 0
+    els.forEach((el) => {
+      const condition = getOffset(el).top - h < 0
 
-//       if (condition) {
-//         el['style'].opacity = 0
-//       }
-//     })
-//   })
-// }
+      const stroke = el['dataset'].stroke
+      el.setAttribute('stroke-dasharray', stroke)
 
-// onMounted(() => {
-//   const planeAndStars = document.querySelectorAll('.animation-plane')
+      if (condition) {
+        el['style'].transition = `all .8s ease-in ${el.classList[0] === 'draw_line' ? '.8s' : '0s'}`
+        el.setAttribute('stroke-dashoffset', '0')
+        el['style'].opacity = 1
+      } else {
+        el.setAttribute('stroke-dashoffset', stroke)
+        el['style'].opacity = 0
+        el['style'].transition = ''
+      }
+    })
+  }
+}
 
-//   if (!planeAndStars) return
-//   animateHandler(planeAndStars)
-// })
+const animateHandler = (els: NodeListOf<Element>) => {
+  window.addEventListener('scroll', scrollAnimation(els))
+}
+
+onMounted(() => {
+  const StarsAndStarTrail = document.querySelectorAll('.animation-plane,.draw_line')
+
+  if (!StarsAndStarTrail) return
+
+  animateHandler(StarsAndStarTrail)
+})
+//@ts-ignore-next-line
+onBeforeUnmount(() => window.removeEventListener('scroll', scrollAnimation))
 </script>
 
 <template>
   <svg
     class="absolute top-0 left-0 w-full"
-    viewBox="0 0 1515 1581"
+    viewBox="0 0 1483 1703"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      d="M6.5 822.149C39.1307 826.991 72.5224 829.5 106.5 829.5C479.568 829.5 782 527.068 782 154C782 109.884 777.771 66.7567 769.696 25"
-      stroke="url(#paint0_linear_594_184)"
+      class="draw_line 1"
+      d="M1.35822 1C-16.6418 221 649.329 305.305 733.358 405C842.958 535.034 505.706 627.887 323.658 682.5C253.825 703.667 101.958 770.8 53.1581 870C-7.84192 994 112.658 1112 280.658 1176C448.658 1240 673.673 1271.12 923.658 1239C960.825 1234.17 1048.16 1222.2 1100.16 1205.8"
+      stroke="url(#paint0_linear_810_805)"
+      stroke-width="2"
+      stroke-linecap="round"
+      data-stroke="3032"
     />
     <path
-      d="M6 1109.94C40.163 1113.62 74.8615 1115.5 110 1115.5C641.298 1115.5 1072 684.798 1072 153.5C1072 109.584 1069.06 66.3551 1063.36 24"
-      stroke="url(#paint1_linear_594_184)"
+      class="draw_line 2"
+      d="M395.706 1702C395.706 1702 -10.2942 1676 31.7058 1540C72.673 1407.34 718.658 1320 1099.66 1206C1161.32 1189 1301.66 1136.6 1369.66 1063C1454.66 971 1440.66 879 1359.66 801C1278.66 723 1116.66 669 1014.66 650C912.658 631 827.158 624.7 767.158 623.7C730.158 622.633 635.048 623.139 548.158 634C432.158 648.5 363.158 670.5 338.658 678"
+      stroke="url(#paint1_linear_810_805)"
+      stroke-width="2"
+      stroke-linecap="round"
+      data-stroke="3239"
     />
-    <path
-      d="M1 1406.38C34.8064 1409.11 68.9907 1410.5 103.5 1410.5C797.446 1410.5 1360 847.946 1360 154C1360 110.447 1357.78 67.4114 1353.46 25"
-      stroke="url(#paint2_linear_594_184)"
+    <circle
+      class="animation-plane"
+      cx="1292.66"
+      cy="398"
+      r="190"
+      fill="url(#paint2_radial_810_805)"
     />
-    <circle cx="1325" cy="423" r="190" fill="url(#paint3_radial_594_184)" class="animation-plane" />
-    <g filter="url(#filter0_f_594_184)" class="animation-plane">
+    <g filter="url(#filter0_f_810_805)">
       <path
-        d="M1332.32 527.326C1274.5 531.637 1224.12 488.253 1219.81 430.423C1215.5 372.594 1258.88 322.219 1316.71 317.907C1374.54 313.595 1424.92 356.98 1429.23 414.809C1433.54 472.639 1390.15 523.014 1332.32 527.326Z"
-        fill="url(#paint4_radial_594_184)"
+        class="animation-plane"
+        d="M1299.98 502.326C1242.15 506.637 1191.78 463.253 1187.47 405.423C1183.15 347.594 1226.54 297.219 1284.37 292.907C1342.2 288.595 1392.57 331.98 1396.89 389.809C1401.2 447.639 1357.81 498.014 1299.98 502.326Z"
+        fill="url(#paint3_radial_810_805)"
       />
       <path
-        d="M1332.32 527.326C1274.5 531.637 1224.12 488.253 1219.81 430.423C1215.5 372.594 1258.88 322.219 1316.71 317.907C1374.54 313.595 1424.92 356.98 1429.23 414.809C1433.54 472.639 1390.15 523.014 1332.32 527.326Z"
-        stroke="url(#paint5_radial_594_184)"
+        class="animation-plane"
+        d="M1299.98 502.326C1242.15 506.637 1191.78 463.253 1187.47 405.423C1183.15 347.594 1226.54 297.219 1284.37 292.907C1342.2 288.595 1392.57 331.98 1396.89 389.809C1401.2 447.639 1357.81 498.014 1299.98 502.326Z"
+        stroke="url(#paint4_radial_810_805)"
         stroke-opacity="0.7"
         stroke-width="13"
       />
     </g>
-    <circle cx="386" cy="1368" r="213" fill="url(#paint6_radial_594_184)" class="animation-plane" />
-    <g filter="url(#filter1_i_594_184)" class="animation-plane">
+    <circle
+      class="animation-plane"
+      cx="283.658"
+      cy="1396"
+      r="213"
+      fill="url(#paint5_radial_810_805)"
+    />
+    <g filter="url(#filter1_i_810_805)">
       <circle
-        cx="386.248"
-        cy="1367.82"
+        class="animation-plane"
+        cx="283.906"
+        cy="1395.82"
         r="94.8071"
-        transform="rotate(85.7359 386.248 1367.82)"
-        fill="url(#paint7_radial_594_184)"
+        transform="rotate(85.7359 283.906 1395.82)"
+        fill="url(#paint6_radial_810_805)"
       />
     </g>
     <circle
-      cx="386.248"
-      cy="1367.82"
+      class="animation-plane"
+      cx="283.906"
+      cy="1395.82"
       r="94.8071"
-      transform="rotate(85.7359 386.248 1367.82)"
-      stroke="url(#paint8_radial_594_184)"
+      transform="rotate(85.7359 283.906 1395.82)"
+      stroke="url(#paint7_radial_810_805)"
       stroke-opacity="0.7"
       stroke-width="10.1128"
-      class="animation-plane"
     />
-    <circle cx="332" cy="243" r="243" fill="url(#paint9_radial_594_184)" class="animation-plane" />
-    <g filter="url(#filter2_f_594_184)" class="animation-plane">
+    <circle
+      class="animation-plane"
+      cx="297.658"
+      cy="251"
+      r="243"
+      fill="url(#paint8_radial_810_805)"
+    />
+    <g filter="url(#filter2_f_810_805)">
       <circle
-        cx="332.407"
-        cy="243.407"
+        class="animation-plane"
+        cx="298.066"
+        cy="251.407"
         r="148.158"
-        transform="rotate(108.435 332.407 243.407)"
-        fill="url(#paint10_radial_594_184)"
+        transform="rotate(108.435 298.066 251.407)"
+        fill="url(#paint9_radial_810_805)"
       />
       <circle
-        cx="332.407"
-        cy="243.407"
+        class="animation-plane"
+        cx="298.066"
+        cy="251.407"
         r="148.158"
-        transform="rotate(108.435 332.407 243.407)"
-        stroke="url(#paint11_radial_594_184)"
+        transform="rotate(108.435 298.066 251.407)"
+        stroke="url(#paint10_radial_810_805)"
         stroke-opacity="0.7"
         stroke-width="20"
       />
       <circle
-        cx="332.407"
-        cy="243.407"
+        class="animation-plane"
+        cx="298.066"
+        cy="251.407"
         r="148.158"
-        transform="rotate(108.435 332.407 243.407)"
-        stroke="url(#paint12_radial_594_184)"
+        transform="rotate(108.435 298.066 251.407)"
+        stroke="url(#paint11_radial_810_805)"
         stroke-opacity="0.2"
         stroke-width="20"
       />
     </g>
-    <circle cx="714" cy="646" r="13" fill="white" class="animation-plane" />
-    <circle cx="624.998" cy="1373.5" r="13" fill="white" class="animation-plane" />
-    <circle cx="1452" cy="1098" r="13" fill="white" class="animation-plane" />
-    <circle cx="140" cy="1020.5" r="13" fill="white" class="animation-plane" />
-    <circle cx="922.998" cy="460.5" r="13" fill="white" class="animation-plane" />
-    <circle cx="922.998" cy="460.5" r="13" fill="white" class="animation-plane" />
-    <circle cx="87" cy="498" r="13" fill="white" class="animation-plane" />
-    <circle cx="1389" cy="694.5" r="13" fill="white" class="animation-plane" />
-    <circle cx="510.001" cy="567.5" r="5" fill="white" class="animation-plane" />
-    <circle cx="510.001" cy="567.5" r="5" fill="white" class="animation-plane" />
-    <circle cx="305" cy="712.5" r="5" fill="white" class="animation-plane" />
-    <circle cx="100" cy="857.5" r="5" fill="white" class="animation-plane" />
-    <circle cx="223" cy="1159.5" r="5" fill="white" class="animation-plane" />
-    <circle cx="520.001" cy="1079.5" r="5" fill="white" class="animation-plane" />
-    <circle cx="690.998" cy="362.5" r="5" fill="white" class="animation-plane" />
-    <circle cx="1213" cy="213" r="5" fill="white" class="animation-plane" />
-    <circle cx="1434" cy="915.5" r="5" fill="white" class="animation-plane" />
-    <circle cx="1165" cy="637.5" r="5" fill="white" class="animation-plane" />
-    <circle cx="642.998" cy="858.4" r="5" fill="white" class="animation-plane" />
-    <circle cx="1276" cy="1047" r="5" fill="white" class="animation-plane" />
-    <circle cx="1038" cy="1183.4" r="5" fill="white" class="animation-plane" />
-    <circle cx="686" cy="1227.1" r="5" fill="white" class="animation-plane" />
-    <circle cx="963" cy="1306" r="5" fill="white" class="animation-plane" />
-    <circle cx="1480" cy="848.101" r="5" fill="white" class="animation-plane" />
-    <circle cx="1365" cy="1152.4" r="5" fill="white" class="animation-plane" />
-    <circle cx="581.001" cy="1418.4" r="5" fill="white" class="animation-plane" />
-    <circle cx="1495" cy="514" r="5" fill="white" class="animation-plane" />
-    <circle cx="158" cy="549.399" r="5" fill="white" class="animation-plane" />
+    <circle class="animation-plane" cx="665.658" cy="624" r="13" fill="white" />
+    <circle class="animation-plane" cx="123.658" cy="1301" r="13" fill="white" />
+    <circle class="animation-plane" cx="1209.66" cy="1165" r="13" fill="white" />
+    <circle class="animation-plane" cx="1315.66" cy="1430" r="13" fill="white" />
+    <circle class="animation-plane" cx="110.757" cy="1028.5" r="13" fill="white" />
+    <circle class="animation-plane" cx="888.656" cy="468.5" r="13" fill="white" />
+    <circle class="animation-plane" cx="888.656" cy="468.5" r="13" fill="white" />
+    <circle class="animation-plane" cx="52.6582" cy="506" r="13" fill="white" />
+    <circle class="animation-plane" cx="1343.66" cy="708" r="13" fill="white" />
+    <circle class="animation-plane" cx="595.658" cy="1328" r="13" fill="white" />
+    <circle class="animation-plane" cx="475.659" cy="575.5" r="5" fill="white" />
+    <circle class="animation-plane" cx="475.659" cy="575.5" r="5" fill="white" />
+    <circle class="animation-plane" cx="400.658" cy="713" r="5" fill="white" />
+    <circle class="animation-plane" cx="58.6582" cy="861" r="5" fill="white" />
+    <circle class="animation-plane" cx="188.659" cy="1167.5" r="5" fill="white" />
+    <circle class="animation-plane" cx="470.658" cy="1147" r="5" fill="white" />
+    <circle class="animation-plane" cx="770.658" cy="300" r="5" fill="white" />
+    <circle class="animation-plane" cx="1178.66" cy="221" r="5" fill="white" />
+    <circle class="animation-plane" cx="1426.96" cy="929" r="5" fill="white" />
+    <circle class="animation-plane" cx="1130.66" cy="645.5" r="5" fill="white" />
+    <circle class="animation-plane" cx="927.958" cy="678" r="5" fill="white" />
+    <circle class="animation-plane" cx="1348.66" cy="1037" r="5" fill="white" />
+    <circle class="animation-plane" cx="1416.66" cy="1492" r="5" fill="white" />
+    <circle class="animation-plane" cx="657.658" cy="1249.2" r="5" fill="white" />
+    <circle class="animation-plane" cx="949.658" cy="1306" r="5" fill="white" />
+    <circle class="animation-plane" cx="1451.06" cy="842" r="5" fill="white" />
+    <circle class="animation-plane" cx="1330.66" cy="1160.4" r="5" fill="white" />
+    <circle class="animation-plane" cx="55.6582" cy="1381" r="5" fill="white" />
+    <circle class="animation-plane" cx="1141.66" cy="1381" r="5" fill="white" />
+    <circle class="animation-plane" cx="1450.66" cy="1306" r="5" fill="white" />
+    <circle class="animation-plane" cx="1460.66" cy="522" r="5" fill="white" />
+    <circle class="animation-plane" cx="123.658" cy="557.399" r="5" fill="white" />
     <defs>
       <filter
-        id="filter0_f_594_184"
-        x="1212.01"
-        y="310.111"
+        id="filter0_f_810_805"
+        x="1179.67"
+        y="285.111"
         width="225.01"
         height="225.01"
         filterUnits="userSpaceOnUse"
@@ -149,12 +197,12 @@
       >
         <feFlood flood-opacity="0" result="BackgroundImageFix" />
         <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-        <feGaussianBlur stdDeviation="0.5" result="effect1_foregroundBlur_594_184" />
+        <feGaussianBlur stdDeviation="0.5" result="effect1_foregroundBlur_810_805" />
       </filter>
       <filter
-        id="filter1_i_594_184"
-        x="267.556"
-        y="1226.54"
+        id="filter1_i_810_805"
+        x="165.214"
+        y="1254.54"
         width="218.56"
         height="241.148"
         filterUnits="userSpaceOnUse"
@@ -172,12 +220,12 @@
         <feGaussianBlur stdDeviation="20.706" />
         <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
         <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
-        <feBlend mode="normal" in2="shape" result="effect1_innerShadow_594_184" />
+        <feBlend mode="normal" in2="shape" result="effect1_innerShadow_810_805" />
       </filter>
       <filter
-        id="filter2_f_594_184"
-        x="173.354"
-        y="84.3546"
+        id="filter2_f_810_805"
+        x="139.013"
+        y="92.3546"
         width="318.105"
         height="318.105"
         filterUnits="userSpaceOnUse"
@@ -185,59 +233,48 @@
       >
         <feFlood flood-opacity="0" result="BackgroundImageFix" />
         <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-        <feGaussianBlur stdDeviation="0.425742" result="effect1_foregroundBlur_594_184" />
+        <feGaussianBlur stdDeviation="0.425742" result="effect1_foregroundBlur_810_805" />
       </filter>
       <linearGradient
-        id="paint0_linear_594_184"
-        x1="106.5"
-        y1="-521.5"
-        x2="106.5"
-        y2="829.5"
+        id="paint0_linear_810_805"
+        x1="70.858"
+        y1="-513.499"
+        x2="70.858"
+        y2="837.498"
         gradientUnits="userSpaceOnUse"
       >
         <stop offset="0.432292" stop-color="#100F42" />
         <stop offset="0.640625" stop-color="white" />
       </linearGradient>
       <linearGradient
-        id="paint1_linear_594_184"
-        x1="110"
-        y1="-808.5"
-        x2="110"
-        y2="1115.5"
-        gradientUnits="userSpaceOnUse"
-      >
-        <stop offset="0.432292" stop-color="#100F42" />
-        <stop offset="0.640625" stop-color="white" />
-      </linearGradient>
-      <linearGradient
-        id="paint2_linear_594_184"
-        x1="103.5"
-        y1="-1102.5"
-        x2="103.5"
-        y2="1410.5"
+        id="paint1_linear_810_805"
+        x1="67.8584"
+        y1="-1094.5"
+        x2="67.8584"
+        y2="1418.5"
         gradientUnits="userSpaceOnUse"
       >
         <stop offset="0.432292" stop-color="#100F42" />
         <stop offset="0.640625" stop-color="white" />
       </linearGradient>
       <radialGradient
-        id="paint3_radial_594_184"
+        id="paint2_radial_810_805"
         cx="0"
         cy="0"
         r="1"
         gradientUnits="userSpaceOnUse"
-        gradientTransform="translate(1325 423) rotate(152.613) scale(186.955)"
+        gradientTransform="translate(1292.66 398) rotate(152.613) scale(186.955)"
       >
         <stop stop-color="#EFFFF7" />
         <stop offset="1" stop-color="#95CAB0" stop-opacity="0" />
       </radialGradient>
       <radialGradient
-        id="paint4_radial_594_184"
+        id="paint3_radial_810_805"
         cx="0"
         cy="0"
         r="1"
         gradientUnits="userSpaceOnUse"
-        gradientTransform="translate(1257 337) rotate(47.5553) scale(191.888 144.078)"
+        gradientTransform="translate(1224.66 312) rotate(47.5553) scale(191.888 144.078)"
       >
         <stop stop-color="white" />
         <stop offset="0.473958" stop-color="#B2D299" />
@@ -245,94 +282,94 @@
         <stop offset="1" stop-color="#354368" />
       </radialGradient>
       <radialGradient
-        id="paint5_radial_594_184"
+        id="paint4_radial_810_805"
         cx="0"
         cy="0"
         r="1"
         gradientUnits="userSpaceOnUse"
-        gradientTransform="translate(1259 361) rotate(54.1888) scale(194.833)"
+        gradientTransform="translate(1226.66 336) rotate(54.1888) scale(194.833)"
       >
         <stop stop-color="white" />
         <stop offset="0.473958" stop-color="#7FCEFB" stop-opacity="0.31" />
         <stop offset="1" stop-color="#0B446D" stop-opacity="0.52" />
       </radialGradient>
       <radialGradient
-        id="paint6_radial_594_184"
+        id="paint5_radial_810_805"
         cx="0"
         cy="0"
         r="1"
         gradientUnits="userSpaceOnUse"
-        gradientTransform="translate(386 1368) rotate(77.4987) scale(143.075)"
+        gradientTransform="translate(283.658 1396) rotate(77.4987) scale(143.075)"
       >
         <stop stop-color="#FFF6D6" />
         <stop offset="1" stop-color="#AFD3DB" stop-opacity="0" />
       </radialGradient>
       <radialGradient
-        id="paint7_radial_594_184"
+        id="paint6_radial_810_805"
         cx="0"
         cy="0"
         r="1"
         gradientUnits="userSpaceOnUse"
-        gradientTransform="translate(332.204 1321.57) rotate(41.7767) scale(157.769)"
+        gradientTransform="translate(229.862 1349.57) rotate(41.7767) scale(157.769)"
       >
         <stop stop-color="#FFFEE9" />
         <stop offset="0.489583" stop-color="#C6BDAB" />
         <stop offset="1" stop-color="#186C87" />
       </radialGradient>
       <radialGradient
-        id="paint8_radial_594_184"
+        id="paint7_radial_810_805"
         cx="0"
         cy="0"
         r="1"
         gradientUnits="userSpaceOnUse"
-        gradientTransform="translate(294.648 1306.73) rotate(42.2536) scale(194.076)"
+        gradientTransform="translate(192.307 1334.73) rotate(42.2536) scale(194.076)"
       >
         <stop stop-color="white" stop-opacity="0.58" />
         <stop offset="0.505208" stop-color="#CFB88B" stop-opacity="0.61" />
         <stop offset="1" stop-color="#7379AC" stop-opacity="0.6" />
       </radialGradient>
       <radialGradient
-        id="paint9_radial_594_184"
+        id="paint8_radial_810_805"
         cx="0"
         cy="0"
         r="1"
         gradientUnits="userSpaceOnUse"
-        gradientTransform="translate(332 243) rotate(146.176) scale(237.135)"
+        gradientTransform="translate(297.658 251) rotate(146.176) scale(237.135)"
       >
         <stop stop-color="white" />
         <stop offset="1" stop-color="white" stop-opacity="0" />
       </radialGradient>
       <radialGradient
-        id="paint10_radial_594_184"
+        id="paint9_radial_810_805"
         cx="0"
         cy="0"
         r="1"
         gradientUnits="userSpaceOnUse"
-        gradientTransform="translate(187.001 191.112) rotate(23.7543) scale(273.98 306.686)"
+        gradientTransform="translate(152.66 199.112) rotate(23.7543) scale(273.98 306.686)"
       >
         <stop stop-color="white" />
         <stop offset="0.46875" stop-color="#7DB0AD" />
         <stop offset="1" stop-color="#382C82" />
       </radialGradient>
       <radialGradient
-        id="paint11_radial_594_184"
+        id="paint10_radial_810_805"
         cx="0"
         cy="0"
         r="1"
         gradientUnits="userSpaceOnUse"
-        gradientTransform="translate(176.049 203.793) rotate(22.3051) scale(324.218 276.465)"
+        gradientTransform="translate(141.708 211.793) rotate(22.3051) scale(324.218 276.465)"
       >
         <stop stop-color="#FDFFFC" stop-opacity="0.63" />
         <stop offset="0.65737" stop-color="#986CBA" stop-opacity="0.558229" />
         <stop offset="1" stop-color="#27318B" stop-opacity="0.5" />
       </radialGradient>
       <radialGradient
-        id="paint12_radial_594_184"
+        id="paint11_radial_810_805"
         cx="0"
         cy="0"
         r="1"
         gradientUnits="userSpaceOnUse"
-        gradientTransform="translate(224.948 175.3) rotate(36.0274) scale(240.865)"
+        gradientTransform="translate(190.607 183.3) rotate(36.0274) scale(240.865)"
       >
         <stop stop-color="#4EB6BD" />
         <stop offset="1" stop-color="#0F1E55" />

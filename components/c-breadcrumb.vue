@@ -19,6 +19,8 @@ const crumbsTitle = (string: string): string => {
       return '聯絡我們'
     case `/paragraph-group/${id}?name=${name}`:
       return name
+    case '/about':
+      return '關於我們'
   }
 }
 

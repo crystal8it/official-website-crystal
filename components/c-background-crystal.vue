@@ -5,7 +5,7 @@ const el = ref()
 onMounted(() => {
   const el = document.querySelector('#animate-banner')
   if (!el) return
-  clientStyle.value = { top: `-${el.clientHeight - 1}px`, position: 'absolute' }
+  clientStyle.value = { top: `-${el.clientHeight - 1}px` }
 
   window.addEventListener('resize', () => {
     clientStyle.value.top = `-${el.clientHeight - 1}px`
@@ -17,7 +17,7 @@ onMounted(() => {
   <svg
     id="animate-banner"
     :style="clientStyle"
-    class="left-0 w-full"
+    class="absolute left-0 -top-full w-full"
     viewBox="0 0 1720 349"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
