@@ -1,15 +1,101 @@
-@import url('https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  scroll-behavior: smooth;
+}
 
 body {
   @apply bg-background-dark;
   scroll-behavior: smooth;
 }
 
-html {
-  font-family: Kiwi Maru, system-ui, sans-serif;
+.hidden-scroll-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.hidden-scroll-ba {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.light-in {
+  animation: lighting 10s ease-in infinite;
+}
+
+.light-in-text {
+  animation: lightingText 5s ease-in infinite;
+}
+
+@keyframes lighting {
+  0% {
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  35% {
+    opacity: 1;
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  60% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes lightingText {
+  0% {
+    color: rgb(255, 255, 255);
+  }
+
+  10% {
+    color: rgb(255, 255, 255);
+  }
+
+  20% {
+    color: #f7d794;
+  }
+
+  30% {
+    color: #f7d794;
+  }
+
+  40% {
+    color: #f7d794;
+  }
+
+  60% {
+    color: #f7d794;
+  }
+
+  80% {
+    color: rgb(255, 255, 255);
+  }
+
+  100% {
+    color: rgb(255, 255, 255);
+  }
 }
 
 @keyframes land {
@@ -19,5 +105,31 @@ html {
 
   to {
     opacity: 0;
+  }
+}
+
+@keyframes text-jump {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px) rotate(180deg);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow-white {
+  40% {
+    text-shadow: 0 0 8px #fff;
+  }
+}
+
+@keyframes glow-yellow {
+  40% {
+    text-shadow: 0 0 8px rgb(234 179 8);
   }
 }

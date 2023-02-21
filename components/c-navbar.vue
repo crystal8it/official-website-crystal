@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { useThrottle } from '~~/hooks/useHooks'
 type Props = {
   links: {
     href: string
@@ -8,10 +9,14 @@ type Props = {
 
 const isScroll = ref()
 
+const scrollHandler = (e) => {
+  const condition = useRoute().fullPath[1] ? 20 : screen.height / 3
+
+  isScroll.value = window.scrollY > condition ? true : false
+}
+
 onMounted(() => {
-  window.addEventListener('scroll', (e) => {
-    isScroll.value = window.scrollY > screen.height / 3 ? true : false
-  })
+  window.addEventListener('scroll', useThrottle(scrollHandler, 250))
 })
 
 defineProps<Props>()

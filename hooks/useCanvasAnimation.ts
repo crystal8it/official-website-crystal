@@ -2,41 +2,38 @@
 import * as THREE from 'three'
 import FOG from 'vanta/dist/vanta.fog.min'
 
-export const useGalaxy = (id: string) => {
-  var n_stars = 150
-  var colors = ['#176ab6', '#fb9b39']
-  for (let i = 0; i < 98; i++) {
-    colors.push('#fff')
-  }
+export const useGalaxy = (id: string, container: string) => {
+  const contianer = document.querySelector(container)
 
-  var canvas = document.querySelector(`#${id}`)
-  canvas.width = document.body.clientWidth
-  canvas.height = document.body.clientHeight
+  const canvas = document.querySelector(`#${id}`)
+  canvas.width = contianer.clientWidth
+  canvas.height = contianer.clientHeight
 
   addEventListener('resize', () => {
-    canvas.width = document.body.clientWidth
-    canvas.height = document.body.clientHeight
+    canvas.width = contianer.clientWidth
+    canvas.height = contianer.clientHeight
     stars = []
     init()
   })
 
-  canvas.style.background = '#000'
-  var c = canvas.getContext('2d')
+  const c = canvas.getContext('2d')
 
   const randomInt = (max, min) => Math.floor(Math.random() * (max - min) + min)
 
-  var bg = c.createRadialGradient(
-    canvas.width / 2,
-    canvas.height * 3,
-    canvas.height,
-    canvas.width / 2,
-    canvas.height,
-    canvas.height * 4
-  )
-  bg.addColorStop(0, '#32465E')
-  bg.addColorStop(0.4, '#000814')
-  bg.addColorStop(0.8, '#000814')
-  bg.addColorStop(1, '#000')
+  const bg = c.createLinearGradient(0, canvas.height, canvas.width, 0)
+
+  bg.addColorStop(0, '#000')
+  bg.addColorStop(0.1, '#003073')
+  bg.addColorStop(0.2, '#0090a3')
+  bg.addColorStop(0.4, '#00a1c6')
+  bg.addColorStop(0.5, '#0090a3')
+  bg.addColorStop(0.7, '#100f42')
+  bg.addColorStop(1, '#100f42')
+
+  const colors = ['#176ab6', '#fb9b39']
+  for (let i = 0; i < 98; i++) {
+    colors.push('#fff')
+  }
 
   class Star {
     constructor(x, y, radius, color) {
@@ -69,7 +66,10 @@ export const useGalaxy = (id: string) => {
       arrayStars.push(new Star(false, canvas.height + 5))
     }
   }
-  var stars = []
+
+  const n_stars = 150
+  let stars = []
+
   function init() {
     for (let i = 0; i < n_stars; i++) {
       stars.push(new Star())
@@ -85,6 +85,10 @@ export const useGalaxy = (id: string) => {
     stars.forEach((s) => s.update(stars))
   }
   animate()
+
+  return () => {
+    c.clearRect(0, 0, canvas.width, canvas.height)
+  }
 }
 
 export const useFog = (id: string) => {

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import scrollTop from '~~/hooks/scrollTop'
+import { useScroll } from '~~/hooks/useHooks'
 
 definePageMeta({
   layout: 'blog'
@@ -10,7 +10,7 @@ useHead({
   meta: [{ name: 'description', content: 'My amazing site.' }]
 })
 
-onMounted(() => scrollTop())
+onMounted(() => useScroll({ top: 0, left: 0, behavior: 'smooth' }))
 
 const typerStates = ref([
   {

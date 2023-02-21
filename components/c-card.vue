@@ -4,6 +4,7 @@ type Props = {
     title?: string
     id: string
   }
+  tailwind?: string
 }
 
 defineProps<Props>()
@@ -12,6 +13,7 @@ defineProps<Props>()
 <template>
   <NuxtLink
     class="rounded-md bg-white"
+    :class="tailwind"
     :to="{
       path: `/paragraph-group/${info.id}`,
       query: {

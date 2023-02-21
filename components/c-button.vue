@@ -1,28 +1,51 @@
 <script lang="ts" setup>
 defineProps<{
   type: string
-  content: string
+  content?: string
   to?: string
   tailwind?: string
+  customStyle?: { [key: string]: string }
+  iconStyle?: { [key: string]: string }
+  icon?: any
 }>()
 </script>
 
 <template>
   <NuxtLink
     v-if="type === 'router'"
-    to="/paragraph/createParagraph"
+    :to="to"
     class="button-style"
+    :style="customStyle"
     :class="tailwind"
   >
-    {{ content }}
+    <span>
+      {{ content }}
+    </span>
+    <component :is="icon" :style="iconStyle"></component>
   </NuxtLink>
-  <button v-else-if="type === 'button'" class="button-style" :class="tailwind">
-    {{ content }}
+  <a
+    v-else-if="type === 'button' && to"
+    :href="to"
+    class="button-style"
+    :style="customStyle"
+    :class="tailwind"
+  >
+    <span>
+      {{ content }}
+    </span>
+    <component :is="icon" :style="iconStyle"></component>
+  </a>
+
+  <button v-else :href="to" class="button-style" :style="customStyle" :class="tailwind">
+    <span>
+      {{ content }}
+    </span>
+    <component :is="icon" :style="iconStyle"></component>
   </button>
 </template>
 
 <style>
 .button-style {
-  @apply text-center  text-white;
+  @apply flex h-[50px] items-center gap-1 rounded-full border-[3px] border-white px-10;
 }
 </style>
