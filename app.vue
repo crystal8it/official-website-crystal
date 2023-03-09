@@ -20,13 +20,29 @@ useHead({
 
 const links = [
   { href: '/about', content: 'About Us' },
+  { href: '/success-story-group', content: 'Story' },
   { href: '/paragraph-group', content: 'Article' },
   { href: '/contact', content: 'Contact' }
 ]
 
 const footerLink = {
-  iconStyle: { width: '40px', height: '40px' },
-  icons: [line, facebook, telegram]
+  icons: [
+    {
+      to: 'line',
+      ctx: line,
+      style: { width: '40px', height: '40px' }
+    },
+    {
+      to: 'facebook',
+      ctx: facebook,
+      style: { width: '40px', height: '40px' }
+    },
+    {
+      to: 'telegram',
+      ctx: telegram,
+      style: { width: '40px', height: '40px' }
+    }
+  ]
 }
 </script>
 
@@ -43,7 +59,7 @@ const footerLink = {
       <footer-crystal></footer-crystal>
 
       <div
-        class="box-border flex h-[150px] w-full items-center justify-between gap-10 pr-[80px] pl-[140px]"
+        class="box-border flex h-[150px] w-full items-center justify-between gap-10 pl-[40px] pr-[80px]"
       >
         <!-- logo -->
         <div class="flex h-[60px] items-end">
@@ -87,9 +103,11 @@ const footerLink = {
             </h3>
           </div>
           <c-icon-a-tag
-            v-for="(ctx, v) in footerLink.icons"
+            v-for="(obj, v) in footerLink.icons"
             :key="v"
-            :icon="{ ctx, style: footerLink.iconStyle }"
+            :to="obj.to"
+            :ctx="obj.ctx"
+            :style="obj.style"
           ></c-icon-a-tag>
         </div>
       </div>

@@ -20,14 +20,15 @@ export const useGalaxy = (id: string, container: string) => {
 
   const randomInt = (max, min) => Math.floor(Math.random() * (max - min) + min)
 
-  const bg = c.createLinearGradient(0, canvas.height, canvas.width, 0)
+  // const bg = c.createLinearGradient(0, canvas.height, canvas.width, 0)
+  const bg = c.createLinearGradient(0, canvas.height, 0, 0)
 
-  bg.addColorStop(0, '#000')
+  bg.addColorStop(0, '#102A57')
   bg.addColorStop(0.1, '#003073')
   bg.addColorStop(0.2, '#0090a3')
   bg.addColorStop(0.4, '#00a1c6')
-  bg.addColorStop(0.5, '#0090a3')
-  bg.addColorStop(0.7, '#100f42')
+  bg.addColorStop(0.7, '#0090a3')
+  bg.addColorStop(0.8, '#100f42')
   bg.addColorStop(1, '#100f42')
 
   const colors = ['#176ab6', '#fb9b39']

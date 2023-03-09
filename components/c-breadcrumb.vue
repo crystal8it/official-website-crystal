@@ -13,14 +13,16 @@ const crumbsTitle = (string: string): string => {
   switch (string) {
     case '/':
       return '首頁'
-    case '/paragraph-group':
-      return '好文分享'
-    case '/contact':
-      return '聯絡我們'
-    case `/paragraph-group/${id}?name=${name}`:
-      return name
     case '/about':
       return '關於我們'
+    case '/success-story-group':
+      return '成功案例'
+    case '/paragraph-group':
+      return '好文分享'
+    case `/paragraph-group/${id}?name=${name}`:
+      return name
+    case '/contact':
+      return '聯絡我們'
   }
 }
 

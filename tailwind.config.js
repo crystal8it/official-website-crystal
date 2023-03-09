@@ -13,8 +13,12 @@ module.exports = {
       colors: {
         'background-dark': '#222'
       },
-      fontFamily:{
-        'kiwimaru':['Kiwi Maru', 'serif']
+      fontFamily: {
+        kiwimaru: ['Kiwi Maru', 'serif']
+      },
+      gridTemplateColumns: {
+        // added new 4 column grid as new4
+        new3: 'repeat(auto-fit, minmax(250px, 1fr))'
       }
     },
     screens: {

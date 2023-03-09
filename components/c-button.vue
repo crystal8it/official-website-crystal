@@ -18,9 +18,10 @@ defineProps<{
     :style="customStyle"
     :class="tailwind"
   >
-    <span>
+    <p>
       {{ content }}
-    </span>
+    </p>
+    <component :is="icon" :style="iconStyle"></component>
     <component :is="icon" :style="iconStyle"></component>
   </NuxtLink>
   <a
@@ -30,9 +31,9 @@ defineProps<{
     :style="customStyle"
     :class="tailwind"
   >
-    <span>
+    <p class="mb-[5px]">
       {{ content }}
-    </span>
+    </p>
     <component :is="icon" :style="iconStyle"></component>
   </a>
 

@@ -30,7 +30,15 @@ onMounted(() => useScroll({ top: 0, left: 0, behavior: 'smooth' }))
   <div>
     <c-header-breadcrumb content="好文分享" />
     <c-grid grid-custom="gap-[50px] auto-rows-[300px]">
-      <c-card v-for="obj in result" :key="obj.id" :info="obj"></c-card>
+      <c-card
+        :to="{
+          path: `paragraph-group/${obj.id}`,
+          query: { name: obj.title }
+        }"
+        v-for="obj in result"
+        :key="obj.id"
+        :info="obj"
+      ></c-card>
     </c-grid>
   </div>
 </template>

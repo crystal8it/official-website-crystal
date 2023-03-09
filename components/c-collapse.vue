@@ -13,7 +13,7 @@ defineProps<Props>()
     v-for="obj in service"
     :key="obj"
   >
-    <h3 class="text-stroke">{{ obj.number }}</h3>
+    <span>{{ obj.icon }}</span>
     <p class="text-3xl">{{ obj.content }}</p>
   </div>
 </template>

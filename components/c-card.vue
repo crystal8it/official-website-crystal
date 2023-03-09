@@ -1,9 +1,8 @@
 <script lang="ts" setup>
+import type { RouteLocationRaw } from 'vue-router'
+
 type Props = {
-  info: {
-    title?: string
-    id: string
-  }
+  to: RouteLocationRaw
   tailwind?: string
 }
 
@@ -11,18 +10,7 @@ defineProps<Props>()
 </script>
 
 <template>
-  <NuxtLink
-    class="rounded-md bg-white"
-    :class="tailwind"
-    :to="{
-      path: `/paragraph-group/${info.id}`,
-      query: {
-        name: info.title
-      }
-    }"
-  >
-    <div class="text-center text-gray-600">
-      <h3>{{ info.title }}</h3>
-    </div>
+  <NuxtLink class="rounded-md bg-white" :class="tailwind" :to="to">
+    <slot></slot>
   </NuxtLink>
 </template>
