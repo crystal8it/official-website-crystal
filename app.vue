@@ -20,7 +20,7 @@ useHead({
 
 const links = [
   { href: '/about', content: 'About Us' },
-  { href: '/success-story-group', content: 'Story' },
+  { href: '/story', content: 'Story' },
   { href: '/paragraph-group', content: 'Article' },
   { href: '/contact', content: 'Contact' }
 ]
@@ -54,12 +54,12 @@ const footerLink = {
     </main>
 
     <footer
-      class="relative box-border h-fit min-h-[150px] w-full items-center bg-[#04132D] text-white"
+      class="relative box-border h-fit min-h-[150px] w-full items-center bg-gradient-to-r from-[#7674EA] to-[#63B4D1] text-white"
     >
       <footer-crystal></footer-crystal>
 
       <div
-        class="box-border flex h-[150px] w-full items-center justify-between gap-10 pl-[40px] pr-[80px]"
+        class="box-border flex h-[150px] w-full items-center justify-between gap-10 bg-[#04132D] pl-[40px] pr-[80px]"
       >
         <!-- logo -->
         <div class="flex h-[60px] items-end">

@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500;700&family=Zen+Maru+Gothic:wght@300;400;500&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 html {
   font-family: 'Noto Sans TC', sans-serif;
+
   scroll-behavior: smooth;
 }
 
@@ -20,6 +22,34 @@ body {
 .hidden-scroll-ba {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+}
+
+/* font */
+.Noto-Sans {
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+.Zen-Maru {
+  font-family: 'Zen Maru Gothic', sans-serif;
+}
+
+/* globle animation */
+
+.pulse {
+  animation: pulse-animation 2s infinite;
+}
+
+@keyframes pulse-animation {
+  0% {
+    box-shadow: 0 0 0 8px rgba(255, 255, 255, 0);
+  }
+
+  25% {
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.8);
+  }
+  75% {
+    box-shadow: 0 0 0 8px rgba(255, 255, 255, 0);
+  }
 }
 
 .light-in {

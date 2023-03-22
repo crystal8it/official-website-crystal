@@ -60,7 +60,6 @@ const eventHandler = {
 
     <c-button
       class="absolute left-[25px] top-1/2 -translate-y-1/2"
-      type="button"
       :custom-style="{
         width: '40px',
         height: '40px',

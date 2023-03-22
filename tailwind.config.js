@@ -14,11 +14,12 @@ module.exports = {
         'background-dark': '#222'
       },
       fontFamily: {
-        kiwimaru: ['Kiwi Maru', 'serif']
+        kiwimaru: ['Kiwi Maru', 'serif'],
+        zenmaru: ['Zen Maru Gothic']
       },
       gridTemplateColumns: {
         // added new 4 column grid as new4
-        new3: 'repeat(auto-fit, minmax(250px, 1fr))'
+        new3: 'repeat(auto-fit, minmax(300px, 300px))'
       }
     },
     screens: {

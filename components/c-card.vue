@@ -3,14 +3,24 @@ import type { RouteLocationRaw } from 'vue-router'
 
 type Props = {
   to: RouteLocationRaw
-  tailwind?: string
+  backgroundImg?: string
 }
 
 defineProps<Props>()
 </script>
 
 <template>
-  <NuxtLink class="rounded-md bg-white" :class="tailwind" :to="to">
+  <NuxtLink
+    :style="{ 'background-image': 'url(' + backgroundImg + ')' }"
+    class="hover rounded-md bg-white bg-cover bg-center bg-no-repeat text-[#444]"
+    :to="to"
+  >
     <slot></slot>
   </NuxtLink>
 </template>
+
+<style>
+.hover:hover {
+  animation: pulse-animation 2s infinite;
+}
+</style>

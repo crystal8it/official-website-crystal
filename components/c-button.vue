@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 defineProps<{
-  type: string
+  type?: string
   content?: string
   to?: string
   tailwind?: string
@@ -38,7 +38,7 @@ defineProps<{
   </a>
 
   <button v-else :href="to" class="button-style" :style="customStyle" :class="tailwind">
-    <span>
+    <span class="text-[16px]">
       {{ content }}
     </span>
     <component :is="icon" :style="iconStyle"></component>
@@ -48,5 +48,9 @@ defineProps<{
 <style>
 .button-style {
   @apply flex h-[50px] items-center gap-1 rounded-full border-[3px] border-white px-10;
+}
+
+.button-style:hover {
+  animation: pulse-animation 2s infinite;
 }
 </style>

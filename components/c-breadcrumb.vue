@@ -15,7 +15,7 @@ const crumbsTitle = (string: string): string => {
       return '首頁'
     case '/about':
       return '關於我們'
-    case '/success-story-group':
+    case '/story':
       return '成功案例'
     case '/paragraph-group':
       return '好文分享'

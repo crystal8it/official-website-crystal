@@ -37,8 +37,8 @@ onMounted(() => useScroll({ top: 0, left: 0, behavior: 'smooth' }))
         }"
         v-for="obj in result"
         :key="obj.id"
-        :info="obj"
-      ></c-card>
+      >
+      </c-card>
     </c-grid>
   </div>
 </template>

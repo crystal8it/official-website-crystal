@@ -27,6 +27,9 @@ export default defineEventHandler(async (event) => {
   try {
     const query = useQuery(event)
     const [queryData] = data.filter((obj) => obj.id === query.id)
+
+    console.log(queryData)
+
     return queryData
   } catch (error) {
     return { result: [], error: error.message }

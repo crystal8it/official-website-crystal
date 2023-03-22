@@ -1,4 +1,4 @@
-export const useScroll = (options, el = window) => {
+export const useScroll = (options: ScrollToOptions, el = window) => {
   el.scrollTo(options)
 }
 
@@ -36,7 +36,7 @@ export const useScrollAnimation = (els: NodeListOf<Element>) => {
 export const useObserverAnimation = (
   targetClass: string,
   activeClassName: string,
-  options = { root: null, rootMargin: '-10px', threshold: 0.3 }
+  options = { root: null, rootMargin: '-10px', threshold: 0.1 }
 ) => {
   const cb = function (entries, observer) {
     const [entry] = entries

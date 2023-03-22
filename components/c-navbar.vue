@@ -24,7 +24,7 @@ defineProps<Props>()
 
 <template>
   <nav
-    class="fixed top-0 left-0 z-50 flex h-[80px] w-full items-center justify-between px-[20px] transition-all duration-300 ease-in"
+    class="fixed top-0 left-0 z-50 flex h-[80px] w-full items-center justify-between px-[20px] font-zenmaru transition-all duration-300 ease-in"
     :class="isScroll && 'bg-[rgba(255,255,255,0.6)] shadow-md  backdrop-blur-sm'"
   >
     <div @pointerdown="$router.push('/')" class="flex cursor-pointer items-center">

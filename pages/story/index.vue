@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { query } from '@firebase/firestore'
-import path from 'path'
 import { useScroll } from '~~/hooks/useHooks'
 
 definePageMeta({
@@ -33,21 +31,21 @@ const data = ref<Data>([
     content: '客製化Cyberbiz網頁',
     img: '/img/ilens/thumbnail.png',
     imgDescribe: 'iLens-愛能視隱形眼鏡 Cyberbiz網頁客製化'
-  },
-  {
-    id: '3',
-    title: '廣容有限公司',
-    content: 'PMS管理系統',
-    img: '/img/ilens/thumbnail.png',
-    imgDescribe: '廣容有限公司 - PMS系統設計'
-  },
-  {
-    id: '4',
-    title: '奇奧有限公司',
-    content: 'Email Routing設定',
-    img: '/img/ilens/thumbnail.png',
-    imgDescribe: 'Email Routing設定, 企業門面打造'
   }
+  // {
+  //   id: '3',
+  //   title: '廣容有限公司',
+  //   content: 'PMS管理系統',
+  //   img: '/img/ilens/thumbnail.png',
+  //   imgDescribe: '廣容有限公司 - PMS系統設計'
+  // },
+  // {
+  //   id: '4',
+  //   title: '奇奧有限公司',
+  //   content: 'Email Routing設定',
+  //   img: '/img/ilens/thumbnail.png',
+  //   imgDescribe: 'Email Routing設定, 企業門面打造'
+  // }
 ])
 
 onMounted(() => useScroll({ top: 0, left: 0, behavior: 'smooth' }))
@@ -61,10 +59,7 @@ onMounted(() => useScroll({ top: 0, left: 0, behavior: 'smooth' }))
         v-for="obj in data"
         :key="obj.id"
         :to="{
-          path: `/success-story-group/${obj.id}`,
-          query: {
-            name: obj.title
-          }
+          path: `story/${obj.id}`
         }"
       >
         <div class="grid h-full">
