@@ -22,33 +22,33 @@ const isOpen = ref(false)
 <template>
   <div
     @pointerdown="isOpen = true"
-    class="duration-400 relative box-border flex w-full items-center gap-[50px] overflow-hidden rounded-full border px-[50px] transition-[max-height] ease-in"
+    class="duration-400 relative box-border flex w-full items-center gap-[50px] overflow-hidden rounded-full border px-[50px] transition-[max-height] ease-in sm:gap-2 sm:px-2"
     :class="
       isOpen
-        ? 'max-h-[1000px] rounded-2xl bg-white text-[#444]'
+        ? 'max-h-[1500px] rounded-2xl bg-white text-[#444]'
         : 'before max-h-[150px] cursor-pointer transition-[max-height] duration-200 ease-in hover:border-none'
     "
   >
     <slot name="icon">
-      <component v-bind:is="Icon" v-show="!isOpen"></component>
+      <component v-bind:is="Icon" v-show="!isOpen" class="sm:w-10"></component>
     </slot>
-    <div class="h-full" :class="isOpen ? 'w-full py-20 px-10' : 'w-4/5 p-5'" ref="height">
+    <div class="h-full" :class="isOpen ? 'w-full py-20 px-10 sm:px-2' : 'w-4/5 p-5'" ref="height">
       <div class="flex w-full">
         <div class="w-3/4">
-          <h2 class="text-3xl">{{ Title }}</h2>
-          <p v-show="isOpen" class="mt-5 font-zenmaru text-2xl">
+          <h2 class="text-3xl sm:text-lg">{{ Title }}</h2>
+          <p v-show="isOpen" class="mt-5 font-zenmaru text-2xl sm:text-sm">
             {{ SubTitle[1] }}
           </p>
         </div>
         <img v-show="isOpen" class="w-1/4" :src="Gif.link" :alt="Gif.describe" />
       </div>
-      <p v-show="!isOpen" class="mt-5 text-lg">
+      <p v-show="!isOpen" class="mt-5 hidden text-lg">
         {{ SubTitle[0] }}
       </p>
 
       <transition name="fade">
-        <div v-show="isOpen" class="a grid" :class="Grid">
-          <p v-for="(value, key) in Content" :key="value + key" class="mt-10 text-xl">
+        <div v-show="isOpen" class="grid sm:grid-cols-1" :class="Grid">
+          <p v-for="(value, key) in Content" :key="value + key" class="mt-10 text-xl sm:text-sm">
             <span class="font-medium">{{ key }}</span
             ><br />
             <span class="mt-2 inline-block font-light">{{ value }}</span>
@@ -60,12 +60,10 @@ const isOpen = ref(false)
     <check-point
       @pointerdown.stop="isOpen = false"
       :fillBlack="isOpen"
-      :width="isOpen ? '15px' : '20px'"
-      :height="isOpen ? '15px' : '20px'"
       :class="
         isOpen
-          ? 'absolute top-5 right-5 z-20 rotate-180 cursor-pointer'
-          : 'pointer-events-none w-1/5'
+          ? 'absolute top-5 right-5 z-20 h-[15px] w-[15px] rotate-180 cursor-pointer'
+          : 'pointer-events-none h-[20px] w-[20px]'
       "
     ></check-point>
   </div>

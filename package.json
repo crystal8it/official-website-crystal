@@ -21,6 +21,8 @@
     "vue-tsc": "^0.40.13"
   },
   "dependencies": {
+    "@jamescoyle/vue-icon": "^0.1.2",
+    "@mdi/js": "^7.2.96",
     "axios": "^1.2.1",
     "firebase": "^9.10.0",
     "three": "^0.147.0",

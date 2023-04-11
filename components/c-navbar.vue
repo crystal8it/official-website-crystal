@@ -1,12 +1,20 @@
 <script lang="ts" setup>
 import { useThrottle } from '~~/hooks/useHooks'
+import SvgIcon from '@jamescoyle/vue-icon'
+import { mdiMenu } from '@mdi/js'
+import facebook from '~~/components/icon/facebook.vue'
+import line from '~~/components/icon/line.vue'
+import telegram from '~~/components/icon/telegram.vue'
+
 type Props = {
   links: {
     href: string
     content: string
   }[]
 }
+defineProps<Props>()
 
+const isShow = ref(false)
 const isScroll = ref()
 
 const scrollHandler = (e) => {
@@ -19,16 +27,35 @@ onMounted(() => {
   window.addEventListener('scroll', useThrottle(scrollHandler, 250))
 })
 
-defineProps<Props>()
+const footerLink = {
+  icons: [
+    {
+      to: 'line',
+      ctx: line,
+      style: { width: '40px', height: '40px' }
+    },
+    {
+      to: 'facebook',
+      ctx: facebook,
+      style: { width: '40px', height: '40px' }
+    },
+    {
+      to: 'telegram',
+      ctx: telegram,
+      style: { width: '40px', height: '40px' }
+    }
+  ]
+}
 </script>
 
 <template>
   <nav
-    class="fixed top-0 left-0 z-50 flex h-[80px] w-full items-center justify-between px-[20px] font-zenmaru transition-all duration-300 ease-in"
+    class="fixed top-0 left-0 z-50 flex h-[80px] w-full items-center justify-between px-5 font-zenmaru transition-all duration-300 ease-in sm:px-3"
     :class="isScroll && 'bg-[rgba(255,255,255,0.6)] shadow-md  backdrop-blur-sm'"
   >
     <div @pointerdown="$router.push('/')" class="flex cursor-pointer items-center">
       <svg
+        class="sm:w-[20px]"
         width="60"
         height="60"
         viewBox="0 0 432 724"
@@ -52,8 +79,9 @@ defineProps<Props>()
           fill="#FBEA58"
         />
       </svg>
-      <div>
+      <div class="sm:ml-2">
         <svg
+          class="sm:h-[20px] sm:w-[80px]"
           width="152"
           height="35"
           viewBox="0 0 152 35"
@@ -265,7 +293,7 @@ defineProps<Props>()
           />
         </svg>
         <h1
-          class="ml-1 text-[16px] tracking-[15px]"
+          class="ml-1 text-[16px] tracking-[15px] sm:m-0 sm:text-[12px]"
           :class="isScroll ? 'text-gray-700' : 'text-white'"
         >
           晶比特設計
@@ -273,7 +301,9 @@ defineProps<Props>()
       </div>
     </div>
 
-    <div class="mr-10 flex gap-10">
+    <!-- desktop -->
+
+    <!-- <div class="mr-10 flex gap-10 sm:hidden">
       <NuxtLink
         v-for="obj in links"
         :key="obj.href"
@@ -282,12 +312,69 @@ defineProps<Props>()
         :class="isScroll ? 'text-gray-600 before:bg-gray-600 ' : 'text-white before:bg-white '"
         >{{ obj.content }}</NuxtLink
       >
-    </div>
+    </div> -->
+
+    <svg-icon
+      @pointerdown="isShow = true"
+      class="cursor-pointer text-white"
+      type="mdi"
+      :path="mdiMenu"
+    ></svg-icon>
+    <!-- mobile -->
+    <teleport to="body">
+      <transition name="navbar">
+        <div
+          v-show="isShow"
+          class="fixed top-0 left-0 z-[2000] flex h-screen w-screen flex-col justify-around bg-gradient-to-br from-[#7674EA] to-[#20F2FF] px-20 pt-10"
+        >
+          <button
+            @pointerdown="isShow = false"
+            class="absolute top-[10px] right-[10px] p-5 text-lg text-white"
+          >
+            X
+          </button>
+
+          <NuxtLink
+            v-for="obj in links"
+            :key="obj.href"
+            class="font-zenmaru text-xl"
+            :class="isScroll ? 'text-gray-600 before:bg-gray-600 ' : 'text-white before:bg-white '"
+            >{{ obj.content }}</NuxtLink
+          >
+
+          <div class="flex gap-5">
+            <c-icon-a-tag
+              v-for="(obj, v) in footerLink.icons"
+              :key="v"
+              :to="obj.to"
+              :ctx="obj.ctx"
+              :style="obj.style"
+            ></c-icon-a-tag>
+          </div>
+        </div>
+      </transition>
+    </teleport>
   </nav>
 </template>
 
 <style scoped>
-.navbar-link {
+.navbar-enter-active,
+.navbar-leave-active {
+  transition: all 0.5s;
+}
+
+.navbar-enter-from,
+.navbar-leave-to {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.navbar-enter-to,
+.navbar-leave-from {
+  opacity: 1;
+  transform: translateX(0%);
+}
+/* .navbar-link {
   @apply relative transition-all duration-75 ease-in before:absolute before:-bottom-[3px] before:left-1/2 before:h-[1px] before:w-0 before:-translate-x-1/2  before:transition-all before:duration-150 before:ease-in before:content-[''];
 }
 
@@ -301,5 +388,5 @@ a.router-hover {
 
 a.router-link-exact-active {
   @apply relative before:absolute  before:-bottom-[3px] before:left-1/2 before:h-[1px] before:w-full before:-translate-x-1/2  before:transition-all before:duration-150 before:ease-in before:content-[''] hover:before:w-full;
-}
+} */
 </style>

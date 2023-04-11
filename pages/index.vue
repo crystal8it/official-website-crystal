@@ -275,10 +275,9 @@ onBeforeUnmount(() => {
     >
       <h2 ref="title" class="mt-[60px] animate-[glow-white_2.5s_infinite_3s_ease-in] tracking-wide">
         <!-- Full -->
-        <span class="block font-zenmaru text-[70px] font-[500]"
+        <span class="block font-zenmaru text-[70px] font-[500] sm:text-[20px]"
           >Full Service for Impact Brands.</span
         >
-        <span class="text-[30px]">隨便打的字</span>
       </h2>
 
       <c-button
@@ -293,20 +292,23 @@ onBeforeUnmount(() => {
   </header>
 
   <section
-    class="relative z-10 bg-gradient-to-b from-[#100f42] via-[#0090a3] to-[#100f42] pt-[100px]"
+    class="relative z-40 bg-gradient-to-b from-[#100f42] via-[#0090a3] to-[#100f42] pt-[100px] sm:pt-0"
     id="galaxy-container"
   >
     <c-crystal />
 
     <!-- Promote Text -->
-    <article id="promote" class="flex h-[720px] w-full items-center justify-center px-20">
-      <div class="fade-in flex gap-10">
-        <div class="w-1/2">
+    <article
+      id="promote"
+      class="flex h-[720px] w-full items-center justify-center px-20 sm:h-fit sm:px-5"
+    >
+      <div class="fade-in flex gap-10 sm:pt-[100px]">
+        <div class="w-1/2 sm:hidden">
           <img class="w-full" src="@/assets/planteGroup.png" alt="" />
         </div>
-        <div class="w-1/2 self-center px-10">
-          <h2 class="font-zenmaru text-4xl">CRYSTAL BIT</h2>
-          <h2 class="mt-5 text-xl leading-8">
+        <div class="w-1/2 self-center px-10 sm:w-full">
+          <h2 class="font-zenmaru text-4xl sm:text-lg">CRYSTAL BIT</h2>
+          <h2 class="mt-5 text-xl leading-8 sm:text-sm">
             我們對未知領域的挑戰抱有期待，且不斷關注科技與趨勢，我們相信，一個具有識別度且高效的網站和系統不僅需要專業的技術支持，還需要深入理解使用者的需求和感受，因此，我們始終將客戶的網站和系統視為自己的作品，盡心投入，精益求精。
           </h2>
         </div>
@@ -315,10 +317,12 @@ onBeforeUnmount(() => {
 
     <!-- Service  -->
     <article class="flex min-h-screen w-full flex-col justify-center pt-[80px]">
-      <div class="fade-in flex w-full flex-col gap-10 px-10">
-        <div class="mb-[40px] px-[100px]">
-          <h2 class="font-zenmaru text-6xl tracking-wide" style="font-weight: 300">SERVICE</h2>
-          <h2 class="mt-2 text-6xl tracking-wide" style="font-weight: 300">服務內容</h2>
+      <div class="fade-in sm:itesm-center flex w-full flex-col gap-10 px-10">
+        <div class="mb-[40px] px-[100px] sm:mb-0 sm:px-0 sm:text-center">
+          <h2 class="font-zenmaru text-6xl tracking-wide sm:text-lg" style="font-weight: 300">
+            SERVICE
+          </h2>
+          <h2 class="mt-2 text-6xl tracking-wide sm:text-lg" style="font-weight: 300">服務內容</h2>
         </div>
 
         <c-collapse
@@ -335,15 +339,19 @@ onBeforeUnmount(() => {
     </article>
 
     <!-- Works -->
-    <article class="fade-in relative w-full overflow-hidden pt-[300px]">
-      <flying-saucer tailwind="absolute top-[130px] -left-[80px]"></flying-saucer>
+    <article class="fade-in relative w-full overflow-hidden pt-[300px] sm:pt-[200px]">
+      <flying-saucer
+        tailwind="absolute top-[130px] -left-[80px] sm:w-full sm:top-0 sm:-left-[75px]"
+      ></flying-saucer>
       <planet-c></planet-c>
-      <div class="absolute top-[500px] h-3/5 w-full">
-        <div class="px-[100px]">
-          <h2 class="font-zenmaru text-6xl tracking-widest" style="font-weight: 300">WORKS</h2>
-          <h2 class="mt-2 text-6xl tracking-wide" style="font-weight: 300">合作案例</h2>
+      <div class="absolute top-[500px] h-3/5 w-full sm:top-0">
+        <div class="px-[100px] sm:mb-[250px] sm:px-0 sm:text-center">
+          <h2 class="font-zenmaru text-6xl tracking-widest sm:text-lg" style="font-weight: 300">
+            WORKS
+          </h2>
+          <h2 class="mt-2 text-6xl tracking-wide sm:text-lg" style="font-weight: 300">合作案例</h2>
         </div>
-        <c-grid grid-custom="relative gap-[40px] ">
+        <c-grid grid-custom="relative gap-[40px] sm:grid-cols-2 sm:gap-2 sm:auto-rows-[200px]">
           <c-card
             v-for="obj in State.works"
             :key="obj.id"
@@ -357,9 +365,11 @@ onBeforeUnmount(() => {
 
     <!-- Article -->
     <article class="fade-in relative mt-40 pb-[400px]">
-      <div class="mb-20 pl-[100px]">
-        <h2 class="font-zenmaru text-6xl tracking-widest" style="font-weight: 300">ARTICLE</h2>
-        <h2 class="mt-2 text-6xl tracking-wide" style="font-weight: 300">文章分享</h2>
+      <div class="mb-20 pl-[100px] sm:px-0 sm:text-center">
+        <h2 class="font-zenmaru text-6xl tracking-widest sm:text-lg" style="font-weight: 300">
+          ARTICLE
+        </h2>
+        <h2 class="mt-2 text-6xl tracking-wide sm:text-lg" style="font-weight: 300">文章分享</h2>
       </div>
 
       <!-- Slider -->

@@ -21,7 +21,8 @@ const eventHandler = {
 
     if (
       type === 'right' &&
-      Math.abs(this.sliderInit) < Math.floor(Math.abs(els.length / this.sliderInit))
+      Math.abs(this.sliderInit) < Math.floor(Math.abs(els.length / this.sliderInit) - 1) &&
+      els.length !== 1
     ) {
       this.sliderInit--
     }
@@ -37,7 +38,7 @@ const eventHandler = {
   <div class="relative w-full">
     <div id="slider" class="max-w-screen relative h-[300px] overflow-hidden">
       <div
-        class="absolute top-0 mr-5 h-[300px] w-1/3 p-4 transition-all"
+        class="absolute top-0 mr-5 h-[300px] w-1/3 p-4 transition-all sm:w-full"
         v-for="(v, i) in article"
         :key="v"
         :style="{ transform: `translateX(calc(${100 * i}%))` }"
@@ -54,6 +55,11 @@ const eventHandler = {
           "
         >
           <h2 class="text-center text-[#444]">{{ v.title }}</h2>
+        </div>
+      </div>
+      <div class="absolute top-0 mr-5 h-[300px] w-1/3 p-4 transition-all sm:w-full">
+        <div class="h-full w-full cursor-pointer rounded-md bg-white">
+          <h2 class="text-center text-[#444]">測試</h2>
         </div>
       </div>
     </div>

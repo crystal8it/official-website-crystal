@@ -7,7 +7,10 @@ defineProps<Props>()
 </script>
 
 <template>
-  <section class="grid auto-rows-[300px] grid-cols-new3 py-[60px] px-[100px]" :class="gridCustom">
+  <section
+    class="grid auto-rows-[300px] grid-cols-new3 py-[60px] px-[100px] sm:px-3"
+    :class="gridCustom"
+  >
     <slot></slot>
   </section>
 </template>

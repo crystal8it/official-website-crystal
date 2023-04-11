@@ -54,7 +54,7 @@ const footerLink = {
     </main>
 
     <footer
-      class="relative box-border h-fit min-h-[150px] w-full items-center bg-gradient-to-r from-[#7674EA] to-[#63B4D1] text-white"
+      class="box-border hidden h-fit min-h-[150px] w-full items-center bg-gradient-to-r from-[#7674EA] to-[#63B4D1] text-white sm:relative"
     >
       <footer-crystal></footer-crystal>
 
