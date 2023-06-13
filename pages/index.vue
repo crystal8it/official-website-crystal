@@ -3,8 +3,6 @@ import type { CollapseProps } from '~~/components/c-collapse.vue'
 import { useFog } from '~~/hooks/useCanvasAnimation'
 import { useScroll, useObserverAnimation } from '~~/hooks/useHooks'
 import CCollapse from '~~/components/c-collapse.vue'
-import planetC from '~~/components/icon/planet-c.vue'
-import flyingSaucer from '~~/components/icon/flyingSaucer.vue'
 import rightArror from '~~/components/icon/rightArrow.vue'
 import galaxy from '~~/components/icon/galaxy.vue'
 import spaceRocket from '~~/components/icon/space-rocket.vue'
@@ -14,15 +12,6 @@ useHead({
   title: '首頁',
   meta: [{ name: 'description', content: 'My amazing site.' }]
 })
-
-type ParagraphData = {
-  result: {
-    title: string
-    id: string
-  }[]
-}
-
-const ParagraphData = await useFetch<ParagraphData>(`/api/plist?col=paragraphs`)
 
 type State = {
   isScroll: boolean
@@ -337,51 +326,6 @@ onBeforeUnmount(() => {
         </c-collapse>
       </div>
     </article>
-
-    <!-- Works -->
-    <!-- <article class="fade-in relative w-full overflow-hidden pt-[300px] sm:pt-[200px]">
-      <flying-saucer
-        tailwind="absolute top-[130px] -left-[80px] sm:w-full sm:top-0 sm:-left-[75px]"
-      ></flying-saucer>
-      <planet-c></planet-c>
-      <div class="absolute top-[500px] h-3/5 w-full sm:top-0">
-        <div class="px-[100px] sm:mb-[250px] sm:px-0 sm:text-center">
-          <h2 class="font-zenmaru text-6xl tracking-widest sm:text-lg" style="font-weight: 300">
-            WORKS
-          </h2>
-          <h2 class="mt-2 text-6xl tracking-wide sm:text-lg" style="font-weight: 300">合作案例</h2>
-        </div>
-        <c-grid grid-custom="relative gap-[40px] sm:grid-cols-2 sm:gap-2 sm:auto-rows-[200px]">
-          <c-card
-            v-for="obj in State.works"
-            :key="obj.id"
-            :to="`story/${obj.id}`"
-            :backgroundImg="obj.backgroundImg"
-            :info="obj"
-          ></c-card>
-        </c-grid>
-      </div>
-    </article> -->
-
-    <!-- Article -->
-    <!-- <article class="fade-in relative mt-40 pb-[400px]">
-      <div class="mb-20 pl-[100px] sm:px-0 sm:text-center">
-        <h2 class="font-zenmaru text-6xl tracking-widest sm:text-lg" style="font-weight: 300">
-          ARTICLE
-        </h2>
-        <h2 class="mt-2 text-6xl tracking-wide sm:text-lg" style="font-weight: 300">文章分享</h2>
-      </div> -->
-
-    <!-- <c-slider :article="ParagraphData.data.value.result" />
-      <div class="mt-5 flex w-full justify-center">
-        <c-button
-          type="router"
-          to="/paragraph-group"
-          tailwind="text-[20px] font-zenmaru"
-          content="More"
-        ></c-button>
-      </div>
-    </article> -->
   </section>
 </template>
 
