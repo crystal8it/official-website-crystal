@@ -339,7 +339,7 @@ onBeforeUnmount(() => {
     </article>
 
     <!-- Works -->
-    <article class="fade-in relative w-full overflow-hidden pt-[300px] sm:pt-[200px]">
+    <!-- <article class="fade-in relative w-full overflow-hidden pt-[300px] sm:pt-[200px]">
       <flying-saucer
         tailwind="absolute top-[130px] -left-[80px] sm:w-full sm:top-0 sm:-left-[75px]"
       ></flying-saucer>
@@ -361,19 +361,18 @@ onBeforeUnmount(() => {
           ></c-card>
         </c-grid>
       </div>
-    </article>
+    </article> -->
 
     <!-- Article -->
-    <article class="fade-in relative mt-40 pb-[400px]">
+    <!-- <article class="fade-in relative mt-40 pb-[400px]">
       <div class="mb-20 pl-[100px] sm:px-0 sm:text-center">
         <h2 class="font-zenmaru text-6xl tracking-widest sm:text-lg" style="font-weight: 300">
           ARTICLE
         </h2>
         <h2 class="mt-2 text-6xl tracking-wide sm:text-lg" style="font-weight: 300">文章分享</h2>
-      </div>
+      </div> -->
 
-      <!-- Slider -->
-      <c-slider :article="ParagraphData.data.value.result" />
+    <!-- <c-slider :article="ParagraphData.data.value.result" />
       <div class="mt-5 flex w-full justify-center">
         <c-button
           type="router"
@@ -382,7 +381,7 @@ onBeforeUnmount(() => {
           content="More"
         ></c-button>
       </div>
-    </article>
+    </article> -->
   </section>
 </template>
 

@@ -300,60 +300,6 @@ const footerLink = {
         </h1>
       </div>
     </div>
-
-    <!-- desktop -->
-
-    <!-- <div class="mr-10 flex gap-10 sm:hidden">
-      <NuxtLink
-        v-for="obj in links"
-        :key="obj.href"
-        :to="obj.href"
-        class="navbar-link router-hover"
-        :class="isScroll ? 'text-gray-600 before:bg-gray-600 ' : 'text-white before:bg-white '"
-        >{{ obj.content }}</NuxtLink
-      >
-    </div> -->
-
-    <svg-icon
-      @pointerdown="isShow = true"
-      class="cursor-pointer text-white"
-      type="mdi"
-      :path="mdiMenu"
-    ></svg-icon>
-    <!-- mobile -->
-    <teleport to="body">
-      <transition name="navbar">
-        <div
-          v-show="isShow"
-          class="fixed top-0 left-0 z-[2000] flex h-screen w-screen flex-col justify-around bg-gradient-to-br from-[#7674EA] to-[#20F2FF] px-20 pt-10"
-        >
-          <button
-            @pointerdown="isShow = false"
-            class="absolute top-[10px] right-[10px] p-5 text-lg text-white"
-          >
-            X
-          </button>
-
-          <NuxtLink
-            v-for="obj in links"
-            :key="obj.href"
-            class="font-zenmaru text-xl"
-            :class="isScroll ? 'text-gray-600 before:bg-gray-600 ' : 'text-white before:bg-white '"
-            >{{ obj.content }}</NuxtLink
-          >
-
-          <div class="flex gap-5">
-            <c-icon-a-tag
-              v-for="(obj, v) in footerLink.icons"
-              :key="v"
-              :to="obj.to"
-              :ctx="obj.ctx"
-              :style="obj.style"
-            ></c-icon-a-tag>
-          </div>
-        </div>
-      </transition>
-    </teleport>
   </nav>
 </template>
 
@@ -374,19 +320,4 @@ const footerLink = {
   opacity: 1;
   transform: translateX(0%);
 }
-/* .navbar-link {
-  @apply relative transition-all duration-75 ease-in before:absolute before:-bottom-[3px] before:left-1/2 before:h-[1px] before:w-0 before:-translate-x-1/2  before:transition-all before:duration-150 before:ease-in before:content-[''];
-}
-
-a.router-link-active {
-  @apply relative before:absolute before:-bottom-[3px] before:left-1/2 before:h-[1px] before:w-full before:-translate-x-1/2  before:transition-all before:duration-150 before:ease-in before:content-[''] hover:before:w-full;
-}
-
-a.router-hover {
-  @apply relative before:-translate-x-1/2 hover:before:absolute hover:before:-bottom-[3px] hover:before:left-1/2  hover:before:h-[1px] hover:before:w-full   hover:before:transition-all hover:before:duration-150 hover:before:ease-in hover:before:content-[''];
-}
-
-a.router-link-exact-active {
-  @apply relative before:absolute  before:-bottom-[3px] before:left-1/2 before:h-[1px] before:w-full before:-translate-x-1/2  before:transition-all before:duration-150 before:ease-in before:content-[''] hover:before:w-full;
-} */
 </style>
